@@ -1,5 +1,7 @@
 <app-header></app-header>
 
+<app-slider *ngIf="router.url == '/'"></app-slider>
+
 <main class="container">
     <router-outlet></router-outlet>
 </main>
