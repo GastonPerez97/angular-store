@@ -1,0 +1,24 @@
+.product-btn-container {
+    display: flex;
+    justify-content: space-around;
+ }
+
+@media screen and (max-width: 1199px) {
+    .product-btn-container {
+       flex-direction: column;
+    }
+
+    .product-btn {
+        margin: 6px 0;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .product-btn-container {
+       flex-direction: row;
+    }
+
+    .product-btn {
+        margin: 6px 0;
+    }
+}

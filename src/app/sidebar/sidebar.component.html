@@ -1,60 +1,74 @@
-<div class="flex-shrink-0 p-3 bg-white">
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-        <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-5 fw-semibold">Collapsible</span>
-    </a>
-    <ul class="list-unstyled ps-0">
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-            Categoria productos 1
-            </button>
-            <div class="collapse show" id="home-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark rounded">Overview</a></li>
-                <li><a href="#" class="link-dark rounded">Updates</a></li>
-                <li><a href="#" class="link-dark rounded">Reports</a></li>
+<div class="sidebar-container navbar navbar-expand-lg">
+    <button class="btn btn-outline-primary categories-btn mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarProductsContent" aria-controls="navbarProductsContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span>Ver Categorías</span>
+    </button>
+
+    <div>
+        <div class="collapse navbar-collapse" id="navbarProductsContent">
+            <ul class="list-unstyled">
+                <div class="pb-3 mb-3 border-bottom categories-title">
+                    <span class="fs-5 fw-semibold">Categorías</span>
+                </div>
+    
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#monitores-collapse" aria-expanded="false">
+                    Monitores
+                    </button>
+                    
+                    <div class="collapse" id="monitores-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">60 Hz</a></li>
+                            <li><a href="#" class="link-dark rounded">144 Hz</a></li>
+                            <li><a href="#" class="link-dark rounded">240 Hz</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#mothers-collapse" aria-expanded="false">
+                    Mothers
+                    </button>
+                    <div class="collapse" id="mothers-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">AMD</a></li>
+                            <li><a href="#" class="link-dark rounded">Intel</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#mouses-collapse" aria-expanded="false">
+                        Mouses
+                    </button>
+                    <div class="collapse" id="mouses-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">Oficina</a></li>
+                            <li><a href="#" class="link-dark rounded">Gamer</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#placas-de-video-collapse" aria-expanded="false">
+                    Placas de video
+                    </button>
+                    <div class="collapse" id="placas-de-video-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">Intel</a></li>
+                            <li><a href="#" class="link-dark rounded">Radeon AMD</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#teclados-collapse" aria-expanded="false">
+                        Teclados
+                    </button>
+                    <div class="collapse" id="teclados-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark rounded">Mecánicos</a></li>
+                            <li><a href="#" class="link-dark rounded">Membrana</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="border-top my-3"></li>
             </ul>
-            </div>
-        </li>
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                Categoria productos 2
-            </button>
-            <div class="collapse" id="dashboard-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">Overview</a></li>
-                    <li><a href="#" class="link-dark rounded">Monthly</a></li>
-                    <li><a href="#" class="link-dark rounded">Annually</a></li>
-                    <li><a href="#" class="link-dark rounded">Weekly</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                Categoria productos 3
-            </button>
-            <div class="collapse" id="orders-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">New</a></li>
-                    <li><a href="#" class="link-dark rounded">Processed</a></li>
-                    <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                    <li><a href="#" class="link-dark rounded">Returned</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="border-top my-3"></li>
-        <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-            Account
-            </button>
-            <div class="collapse" id="account-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="#" class="link-dark rounded">New...</a></li>
-                    <li><a href="#" class="link-dark rounded">Profile</a></li>
-                    <li><a href="#" class="link-dark rounded">Settings</a></li>
-                    <li><a href="#" class="link-dark rounded">Sign out</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>

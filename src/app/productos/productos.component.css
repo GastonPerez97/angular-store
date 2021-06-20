@@ -1,0 +1,11 @@
+@media screen and (min-width: 992px) {
+    .sidebarTop-container {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .sidebarLeft-container {
+        display: none;
+    }
+}
