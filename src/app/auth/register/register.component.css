@@ -1,3 +1,15 @@
 .card-body {
-    width: 70%;
+    width: 75%;
+}
+
+@media screen and (max-width: 1199px) {
+    .card-body {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .card-body {
+        width: 100%;
+    }
 }

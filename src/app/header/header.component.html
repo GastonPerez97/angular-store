@@ -1,4 +1,30 @@
-<div class="container">
+<nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light py-4">
+    <div class="container px-0">
+        <a class="navbar-brand" routerLink="/">BRAND LOGO</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto text-center navbar-btn">
+                <li>
+                    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link px-2 link-dark"> Inicio</a>
+                </li>
+                <li>
+                    <a routerLink="/productos" routerLinkActive="active" class="nav-link px-2 link-dark">Productos</a>
+                </li>
+            </ul>
+
+            <div class="text-center auth-btn">
+                <button routerLink="/ingresar" type="button" class="btn btn-outline-primary me-2">Iniciar Sesión</button>
+                <button routerLink="/registrarse" type="button" class="btn btn-primary">Registrarse</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- <nav class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
       <a routerLink="" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
@@ -14,4 +40,4 @@
         <button routerLink="/registrarse" type="button" class="btn btn-primary">Registrarse</button>
       </div>
     </header>
-</div>
+</nav> -->

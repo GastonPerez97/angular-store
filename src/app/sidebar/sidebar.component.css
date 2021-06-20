@@ -71,3 +71,23 @@
   
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+@media screen and (min-width: 992px) {
+    .categories-btn {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .sidebar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .categories-title {
+        display: none;
+    }
+}
+
+
