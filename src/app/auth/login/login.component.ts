@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -13,13 +14,21 @@ export class LoginComponent implements OnInit {
         password: new FormControl('')
     })
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private router: Router) { }
 
     ngOnInit(): void {
     }
 
-    loginUser() {
+    async loginUser() {
         const { email, password } = this.loginForm.value;
-        this.authService.loginUser(email, password);
+
+        try {
+            const user = await this.authService.loginUser(email, password);
+
+            if (user)
+                this.router.navigate(['/']);
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

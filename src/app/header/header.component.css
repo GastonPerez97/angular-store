@@ -2,6 +2,12 @@
     font-weight: bold;
 }
 
+.auth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (max-width: 992px) {
     .auth-btn {
         padding: 8px;
@@ -9,5 +15,11 @@
 
     .navbar-btn {
         margin-top: 20px;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .auth-btn {
+        flex-direction: column;
     }
 }
