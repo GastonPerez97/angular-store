@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "taller-web-2": {
+      "hosting": {
+        "taller-web2-proyecto": [
+          "taller-web-2"
+        ]
+      }
+    }
+  }
+}
