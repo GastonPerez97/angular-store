@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -9,15 +9,21 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-    registerForm = new FormGroup({
-        email: new FormControl(''),
-        password: new FormControl(''),
-        confirmPassword: new FormControl('')
-    })
+    registerForm: FormGroup;
 
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { 
+        this.registerForm = this.formBuilder.group({
+            email: new FormControl('', [Validators.required, Validators.pattern('^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$')]),
+            password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
+        });
+    }
 
     ngOnInit(): void {
+    }
+
+    registerFormGet(name: string) {
+        return this.registerForm.get(name);
     }
 
     async registerUser() {

@@ -16,23 +16,44 @@
                         <input name="surname" id="surname" class="form-control" placeholder="Apellido" type="text" required />
                     </div>
 
-                    <div class="form-group input-group mb-2">
-                        <span class="input-group-text"> <i class="fa fa-envelope fa-fw"></i> </span>
-                        <input name="email" id="email" class="form-control" placeholder="Email" type="email" formControlName="email" required />
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-envelope fa-fw"></i> </span>
+                            <input name="email" id="email" class="form-control" placeholder="E-Mail" type="email" formControlName="email" required />
+                        </div>
+    
+                        <div *ngIf="registerFormGet('email')?.errors && registerFormGet('email')?.touched" class="mb-2">
+                            <div *ngIf="registerFormGet('email')?.errors?.required">El campo E-Mail es obligatorio.</div>
+                            <div *ngIf="registerFormGet('email')?.errors?.pattern">Ingresa un E-Mail válido.</div>
+                        </div>
                     </div>
 
-                    <div class="form-group input-group mb-2">
-                        <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
-                        <input name="pass" id="pass" class="form-control" placeholder="Contraseña" type="password" formControlName="password" required />
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
+                            <input name="password" id="password" class="form-control" placeholder="Contraseña" type="password" formControlName="password" required />
+                        </div>
+    
+                        <div *ngIf="registerFormGet('password')?.errors && registerFormGet('password')?.touched" class="mb-2">
+                            <div *ngIf="registerFormGet('password')?.errors?.required">El campo Contraseña es obligatorio.</div>
+                            <div *ngIf="registerFormGet('password')?.errors?.minlength">La contraseña debe ser de al menos 6 caracteres.</div>
+                        </div>
                     </div>
 
-                    <div class="form-group input-group">
-                        <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
-                        <input type="confirmPass" id="confirmPass" class="form-control" placeholder="Confirmar contraseña" type="password" formControlName="confirmPassword" required />
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
+                            <input type="confirmPass" id="confirmPass" class="form-control" placeholder="Confirmar contraseña" type="password" formControlName="confirmPassword" required />
+                        </div>
+
+                        <div *ngIf="registerFormGet('confirmPassword')?.errors && registerFormGet('confirmPassword')?.touched" class="mb-2">
+                            <div *ngIf="registerFormGet('confirmPassword')?.errors?.required">El campo Confirmar constraseña es obligatorio.</div>
+                            <div *ngIf="registerFormGet('confirmPassword')?.errors?.minlength">La contraseña debe ser de al menos 6 caracteres.</div>
+                        </div>
                     </div>
 
                     <div class="form-group text-center my-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Registrarse" />
+                        <input type="submit" class="btn btn-primary btn-block" value="Registrarse" [disabled]="registerForm.invalid" />
                     </div>
 
                     <p class="text-center">¿Ya tenés una cuenta?

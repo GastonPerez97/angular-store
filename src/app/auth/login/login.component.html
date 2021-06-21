@@ -5,14 +5,28 @@
                 <h5 class="card-title fs-2 text-center mb-4 mt-2">Iniciar Sesión</h5>
 
                 <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-                    <div class="form-group input-group mb-3">
-                        <span class="input-group-text"> <i class="fa fa-user fa-fw"></i> </span>
-                        <input type="email" id="inputEmail" class="form-control" style="height: 40px;" placeholder="Email"  formControlName="email" required autofocus>
+                    <div>
+                        <div class="form-group input-group mb-3">
+                            <span class="input-group-text"> <i class="fa fa-user fa-fw"></i> </span>
+                            <input type="email" id="inputEmail" class="form-control" style="height: 40px;" placeholder="Email"  formControlName="email" required>
+                        </div>
+
+                        <div *ngIf="loginFormGet('email')?.errors && loginFormGet('email')?.touched" class="mb-3">
+                            <div *ngIf="loginFormGet('email')?.errors?.required">El campo E-Mail es obligatorio.</div>
+                            <div *ngIf="loginFormGet('email')?.errors?.pattern">Ingresa un E-Mail válido.</div>
+                        </div>
                     </div>
 
-                    <div class="form-group input-group mb-4">
-                        <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
-                        <input type="password" id="inputPassword" class="form-control" style="height: 40px;" placeholder="Contraseña" formControlName="password" required>
+                    <div>
+                        <div class="form-group input-group mb-3">
+                            <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
+                            <input type="password" id="inputPassword" class="form-control" style="height: 40px;" placeholder="Contraseña" formControlName="password" required>
+                        </div>
+
+                        <div *ngIf="loginFormGet('password')?.errors && loginFormGet('password')?.touched" class="mb-3">
+                            <div *ngIf="loginFormGet('password')?.errors?.required">El campo Contraseña es obligatorio.</div>
+                            <div *ngIf="loginFormGet('password')?.errors?.minlength">La contraseña debe ser de al menos 6 caracteres.</div>
+                        </div>
                     </div>
 
                     <div class="mb-4">
