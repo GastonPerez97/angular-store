@@ -11,7 +11,8 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
     registerForm = new FormGroup({
         email: new FormControl(''),
-        password: new FormControl('')
+        password: new FormControl(''),
+        confirmPassword: new FormControl('')
     })
 
     constructor(private authService: AuthService, private router: Router) { }

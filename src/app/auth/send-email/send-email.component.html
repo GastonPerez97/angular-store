@@ -1,11 +1,14 @@
-<div class="card mt-5" *ngIf="user$ | async as user; else loading">
+<div class="card col-12 col-lg-6 mx-auto mt-5 py-4 px-0 px-sm-5" *ngIf="user$ | async as user; else nothingHere">
     <div class="card-body">
         <h3 class="card-title text-center">Gracias por registrarte!</h3>
         <div class="form-group mt-3">
-            <p class="text-center">Enviamos una confirmación de registro al E-Mail <strong>{{ user?.email }}</strong></p>
+            <p class="text-center">Enviamos una confirmación de registro al E-Mail:</p>
+            <div class="text-center mb-3">
+                <strong>{{ user?.email }}</strong>
+            </div>
             <p class="text-center">Por favor revisa tu E-Mail y clickea en el link para verificar tu cuenta.</p>
         </div>
-        <div class="form-group text-center mt-3">
+        <div class="form-group text-center mt-5">
             <button class="btn btn-primary text-center" (click)="sendVerificationEmail()">
                 Reenviar verificación de E-Mail
             </button>
@@ -13,6 +16,9 @@
     </div>
 </div>
 
-<ng-template #loading>
-    Cargando...
+<ng-template #nothingHere>
+    <div class="text-center mt-3">
+        <h1 class="mb-5">Oops, nada por aca!</h1>
+        <button class="btn btn-primary" routerLink="/">Volver a inicio</button>
+    </div>
 </ng-template>

@@ -11,12 +11,12 @@ export class SendEmailComponent implements OnDestroy {
     public user$: Observable<any> = this.authService.afAuth.user;
 
     constructor(private authService: AuthService) { }
+    
+    ngOnDestroy() {
+        this.authService.logoutUser();
+    }
 
     sendVerificationEmail(): void {
         this.authService.sendVerificationEmail();
-    }
-
-    ngOnDestroy() {
-        this.authService.logoutUser();
     }
 }
