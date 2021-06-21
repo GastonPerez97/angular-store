@@ -20,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { SliderComponent } from './slider/slider.component';
+import { SendEmailComponent } from './auth/send-email/send-email.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SliderComponent } from './slider/slider.component';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    SliderComponent
+    SliderComponent,
+    SendEmailComponent
   ],
   imports: [
     BrowserModule,

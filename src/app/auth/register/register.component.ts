@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
             const user = await this.authService.registerUser(email, password);
             
             if (user)
-                this.router.navigate(['/']);
+                this.router.navigate(['/verificar-email']);
         } catch (error) {
             console.log(error);
         }
