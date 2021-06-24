@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -24,7 +25,17 @@ export class ForgotPasswordComponent implements OnInit {
         try {
             const email: string = this.forgotPasswordForm.get('email')?.value;
             await this.authService.resetPassword(email);
-            this.router.navigate(['/ingresar']);
+
+            Swal.fire({
+                title: '¡Éxito!',
+                text: "Enviamos un mail a tu correo, acordate de revisar los correos no deseados.",
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ir a Iniciar Sesión'
+              }).then((result) => {
+                this.router.navigate(['/ingresar']);
+            })
+
         } catch (error) {
             console.log(error);
         }

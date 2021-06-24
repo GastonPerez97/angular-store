@@ -1,5 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,13 +12,28 @@ import { AuthService } from '../services/auth.service';
 export class SendEmailComponent implements OnDestroy {
     public user$: Observable<any> = this.authService.afAuth.user;
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private router: Router) { }
     
     ngOnDestroy() {
         this.authService.logoutUser();
     }
 
-    sendVerificationEmail(): void {
-        this.authService.sendVerificationEmail();
+    async sendVerificationEmail() {
+        try {
+            await this.authService.sendVerificationEmail();
+
+            Swal.fire({
+                title: '¡Éxito!',
+                text: "Enviamos un mail a tu correo, acordate de revisar los correos no deseados.",
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ir a Iniciar Sesión'
+              }).then((result) => {
+                this.router.navigate(['/ingresar']);
+            })
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 }

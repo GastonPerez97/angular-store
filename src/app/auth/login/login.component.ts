@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -31,16 +32,25 @@ export class LoginComponent implements OnInit {
         try {
             const user = await this.authService.loginUser(email, password);
 
-            if (user && user.user.emailVerified) {
-                this.router.navigate(['/']);
-            } else if (user) {
-                this.router.navigate(['/verificar-email']);
+            if (user.message && user.code) {
+                throw new Error(user);
             } else {
-                this.router.navigate(['/registrarse']);
+                if (user && user.user?.emailVerified) {
+                    this.router.navigate(['/']);
+                } else if (user) {
+                    this.router.navigate(['/verificar-email']);
+                } else {
+                    this.router.navigate(['/registrarse']);
+                }
             }
-                
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                title: '¡Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Cerrar'
+            })
         }
     }
 }
