@@ -39,4 +39,12 @@ export class AuthService {
             return error;
         }
     }
+
+    async resetPassword(email: string): Promise<any> {
+        try {
+            return this.afAuth.sendPasswordResetEmail(email);
+        } catch (error) {
+            return error;
+        }
+    }
 }

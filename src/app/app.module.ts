@@ -21,6 +21,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { SliderComponent } from './slider/slider.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SendEmailComponent } from './auth/send-email/send-email.component';
     LoginComponent,
     RegisterComponent,
     SliderComponent,
-    SendEmailComponent
+    SendEmailComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
