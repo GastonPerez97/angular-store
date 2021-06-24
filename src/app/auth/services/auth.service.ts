@@ -3,6 +3,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable()
 export class AuthService {
+    authErrors: any = {
+        'auth/invalid-email': 'El formato del E-Mail no es válido.',
+        'auth/wrong-password': 'Contraseña incorrecta.',
+        'auth/weak-password': 'La contraseña debe tener al menos 6 caracteres.',
+        'auth/user-not-found': 'No se encontró el usuario con el E-Mail ingresado.',
+        'auth/email-already-in-use': 'El E-Mail ingresado ya está siendo usado por otra cuenta.',
+        'auth/too-many-requests': 'Se han realizado muchas solicitudes en poco tiempo. Intentalo más tarde.'
+    };
+
     constructor(public afAuth: AngularFireAuth) { }
 
     async loginUser(email: string, password: string) {

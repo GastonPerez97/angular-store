@@ -32,7 +32,13 @@ export class SendEmailComponent implements OnDestroy {
                 this.router.navigate(['/ingresar']);
             })
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                title: '¡Error!',
+                text: this.authService.authErrors[error.code],
+                icon: 'error',
+                confirmButtonColor: '#3459e6',
+                confirmButtonText: 'Cerrar'
+            })
         }
 
     }

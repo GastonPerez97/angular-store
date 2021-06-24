@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -29,6 +30,28 @@ export class RegisterComponent implements OnInit {
         return this.registerForm.get(name);
     }
 
+    async registerUser() {
+        const { email, password } = this.registerForm.value;
+
+        try {
+            const user = await this.authService.registerUser(email, password);
+            
+            if (user.message && user.code) {
+                throw user;
+            } else {
+                this.router.navigate(['/verificar-email']);
+            }
+        } catch (error) {
+            Swal.fire({
+                title: '¡Error!',
+                text: this.authService.authErrors[error.code],
+                icon: 'error',
+                confirmButtonColor: '#3459e6',
+                confirmButtonText: 'Cerrar'
+            })
+        }
+    }
+
     checkPasswords() {
         return (formGroup: FormGroup) => {
             const passwordControl = formGroup.controls['password'];
@@ -43,19 +66,6 @@ export class RegisterComponent implements OnInit {
             } else {
                 confirmPasswordControl.setErrors(null);
             }
-        }
-    }
-
-    async registerUser() {
-        const { email, password } = this.registerForm.value;
-
-        try {
-            const user = await this.authService.registerUser(email, password);
-            
-            if (user)
-                this.router.navigate(['/verificar-email']);
-        } catch (error) {
-            console.log(error);
         }
     }
 }

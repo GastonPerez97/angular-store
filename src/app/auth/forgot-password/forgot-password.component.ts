@@ -30,14 +30,20 @@ export class ForgotPasswordComponent implements OnInit {
                 title: '¡Éxito!',
                 text: "Enviamos un mail a tu correo, acordate de revisar los correos no deseados.",
                 icon: 'success',
-                confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#3459e6',
                 confirmButtonText: 'Ir a Iniciar Sesión'
               }).then((result) => {
                 this.router.navigate(['/ingresar']);
             })
 
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                title: '¡Error!',
+                text: this.authService.authErrors[error.code],
+                icon: 'error',
+                confirmButtonColor: '#3459e6',
+                confirmButtonText: 'Cerrar'
+            })
         }
     }
 

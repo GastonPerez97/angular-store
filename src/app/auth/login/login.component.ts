@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
             const user = await this.authService.loginUser(email, password);
 
             if (user.message && user.code) {
-                throw new Error(user);
+                throw user;
             } else {
                 if (user && user.user?.emailVerified) {
                     this.router.navigate(['/']);
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
         } catch (error) {
             Swal.fire({
                 title: '¡Error!',
-                text: error.message,
+                text: this.authService.authErrors[error.code],
                 icon: 'error',
-                confirmButtonColor: '#3085d6',
+                confirmButtonColor: '#3459e6',
                 confirmButtonText: 'Cerrar'
             })
         }
