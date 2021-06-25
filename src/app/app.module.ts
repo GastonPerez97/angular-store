@@ -15,6 +15,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { SliderComponent } from './slider/slider.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { PrecioProductoComponent } from './precio-producto/precio-producto.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SliderComponent } from './slider/slider.component';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
-    SliderComponent
+    SliderComponent,
+    DetalleProductoComponent,
+    PrecioProductoComponent
   ],
   imports: [
     BrowserModule,

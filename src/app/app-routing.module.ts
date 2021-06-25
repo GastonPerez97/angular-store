@@ -6,12 +6,14 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductosComponent } from './productos/productos.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 const routes: Routes = [
     { path: "", component: HomeComponent},
     { path: "productos", component: ProductosComponent},
     { path: "ingresar", component: LoginComponent},
     { path: "registrarse", component: RegisterComponent},
+    { path: "detalle", component: DetalleProductoComponent},
     { path: "**", component: NotFoundComponent}
 ];
 
