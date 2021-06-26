@@ -9,6 +9,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { NewProductComponent } from './newProduct/new.product.component';
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: "verificar-email", component: SendEmailComponent },
     { path: "restablecer-contraseña", component: ForgotPasswordComponent },
     { path: "detalle", component: DetalleProductoComponent},
+    { path: "nuevo-producto", component: NewProductComponent},
     { path: "**", component: NotFoundComponent }
 ];
 

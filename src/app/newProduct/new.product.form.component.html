@@ -1,0 +1,50 @@
+<form action="#" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" class="form-control" />
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="prize">Precio:</label>
+            <input type="number" id="prize" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="type">Categoria:</label>
+            <select id="type" class="form-control">
+                <option selected>----</option>
+                <option>Monitores</option>
+                <option>Perifericos</option>
+                <option>Gabinetes</option>
+                <option>Otros</option>
+              </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="descripcion">Descripcion:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <div class="form-row mt-4">
+        <div class="form-group col-md-7 my-auto">
+            <div class="custom-file">
+                <label for="image" class="custom-file-label">Elegir imagen:</label>
+                <input type="file" class="custom-file-input" id="image">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row mt-4">
+        <div class="form-group col-md-3 text-center my-auto">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="stock">
+                <label class="form-check-label" for="stock">Disponible</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mt-5 text-center">
+        <button type="submit" class="btn btn-outline-success mx-auto">Agregar Producto</button>
+    </div>
+</form>
