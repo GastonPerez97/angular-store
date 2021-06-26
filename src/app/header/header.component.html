@@ -14,6 +14,9 @@
                 <li>
                     <a routerLink="/productos" routerLinkActive="active" class="nav-link px-2 link-dark">Productos</a>
                 </li>
+                <li>
+                    <a routerLink="/nuevo-producto" routerLinkActive="active" class="nav-link px-2 link-dark">Nuevo Producto</a>
+                </li>
             </ul>
 
             <div *ngIf="user$ | async as user; else login">

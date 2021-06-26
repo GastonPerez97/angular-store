@@ -25,6 +25,8 @@ import { DetalleProductoComponent } from './detalle-producto/detalle-producto.co
 import { PrecioProductoComponent } from './precio-producto/precio-producto.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { NewProductComponent } from './newProduct/new.product.component';
+import { NewProductFormComponent } from './newProduct/new.product.form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
     DetalleProductoComponent,
     PrecioProductoComponent,
     SendEmailComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    NewProductComponent,
+    NewProductFormComponent
   ],
   imports: [
     BrowserModule,
