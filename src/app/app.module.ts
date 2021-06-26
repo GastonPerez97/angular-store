@@ -21,6 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { SliderComponent } from './slider/slider.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { PrecioProductoComponent } from './precio-producto/precio-producto.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 
@@ -37,6 +39,8 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
     LoginComponent,
     RegisterComponent,
     SliderComponent,
+    DetalleProductoComponent,
+    PrecioProductoComponent,
     SendEmailComponent,
     ForgotPasswordComponent
   ],

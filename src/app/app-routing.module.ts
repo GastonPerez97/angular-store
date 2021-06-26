@@ -6,6 +6,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductosComponent } from './productos/productos.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: "registrarse", component: RegisterComponent },
     { path: "verificar-email", component: SendEmailComponent },
     { path: "restablecer-contraseña", component: ForgotPasswordComponent },
+    { path: "detalle", component: DetalleProductoComponent},
     { path: "**", component: NotFoundComponent }
 ];
 

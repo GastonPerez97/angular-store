@@ -1,0 +1,22 @@
+.datos{
+  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 10%;
+}
+
+.descripcion{
+ width: 90%;
+ text-align: justify;
+}
+
+.titulo-descripcion{
+  font-weight: bold;
+}
+
+@media screen and (max-width: 991px) {
+ .principal{
+   display: flex;
+   flex-direction: column-reverse;
+
+ }
+}

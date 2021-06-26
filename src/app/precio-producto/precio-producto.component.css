@@ -1,0 +1,16 @@
+span{
+  font-weight: bold;
+}
+
+button{
+  width: 100%;
+}
+
+input{
+  width: 25%;
+}
+
+.titulo{
+  font-size: larger;
+  font-weight: bold;
+}
