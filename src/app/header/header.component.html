@@ -1,5 +1,5 @@
 <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light py-4">
-    <div class="container px-0">
+    <header class="container px-0">
         <a class="navbar-brand" routerLink="/">BRAND LOGO</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,28 +16,25 @@
                 </li>
             </ul>
 
-            <div class="text-center auth-btn">
-                <button routerLink="/ingresar" type="button" class="btn btn-outline-primary me-2">Iniciar Sesión</button>
-                <button routerLink="/registrarse" type="button" class="btn btn-primary">Registrarse</button>
+            <div *ngIf="user$ | async as user; else login">
+                <div class="text-center auth-btn">
+                    <div class="d-flex align-items-center justify-content-center mb-3 mb-sm-0">
+                        <p class="m-0">{{ user.email }}</p>
+                        <a class="text-decoration-none btn btn-outline-primary ms-3 mx-0 mx-sm-3"><i class="fa fa-shopping-cart"></i></a>
+                    </div>
+
+                    <button routerLink="/ingresar" type="button" class="btn btn-outline-primary" (click)="logoutUser()">
+                        Cerrar Sesión
+                    </button>
+                </div>
             </div>
+
+            <ng-template #login>
+                <div class="text-center auth-btn">
+                    <button routerLink="/ingresar" type="button" class="btn btn-outline-primary me-2">Iniciar Sesión</button>
+                    <button routerLink="/registrarse" type="button" class="btn btn-primary">Registrarse</button>
+                </div>
+            </ng-template>
         </div>
-    </div>
-</nav>
-
-<!-- <nav class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-      <a routerLink="" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link px-2 link-dark">Inicio</a></li>
-        <li><a routerLink="/productos" routerLinkActive="active" class="nav-link px-2 link-dark">Productos</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <button routerLink="/ingresar" type="button" class="btn btn-outline-primary me-2">Iniciar Sesión</button>
-        <button routerLink="/registrarse" type="button" class="btn btn-primary">Registrarse</button>
-      </div>
     </header>
-</nav> -->
+</nav>
