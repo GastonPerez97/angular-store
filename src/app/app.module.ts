@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
+import { AuthService } from './auth/services/auth.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +23,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { SliderComponent } from './slider/slider.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { PrecioProductoComponent } from './precio-producto/precio-producto.component';
+import { SendEmailComponent } from './auth/send-email/send-email.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +40,20 @@ import { PrecioProductoComponent } from './precio-producto/precio-producto.compo
     RegisterComponent,
     SliderComponent,
     DetalleProductoComponent,
-    PrecioProductoComponent
+    PrecioProductoComponent,
+    SendEmailComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    SweetAlert2Module.forRoot()
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

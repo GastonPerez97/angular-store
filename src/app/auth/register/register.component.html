@@ -5,34 +5,79 @@
                 <h4 class="card-title mt-2 mb-3 text-center fs-2">Crear cuenta</h4>
                 <p class="text-center mb-4">¡Registrate, es gratis!</p>
 
-                <form method="POST" action="">
-                    <div class="form-group input-group mb-2">
-                        <span class="input-group-text"> <i class="fa fa-user fa-fw"></i> </span>
-                        <input name="name" id="name" class="form-control" placeholder="Nombre" type="text" required />
+                <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-user fa-fw"></i> </span>
+                            <input name="name" id="name" class="form-control" placeholder="Nombre" type="text" formControlName="name" required />
+                        </div>
+
+                        <div *ngIf="registerFormGet('name')?.errors && registerFormGet('name')?.touched" class="mb-3 text-danger">
+                            <div *ngIf="registerFormGet('name')?.errors?.required">El campo Nombre es obligatorio.</div>
+                        </div>
                     </div>
 
-                    <div class="form-group input-group mb-2">
-                        <span class="input-group-text"> <i class="fa fa-user fa-fw"></i> </span>
-                        <input name="surname" id="surname" class="form-control" placeholder="Apellido" type="text" required />
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-user fa-fw"></i> </span>
+                            <input name="surname" id="surname" class="form-control" placeholder="Apellido" type="text" formControlName="surname" required />
+                        </div>
+
+                        <div *ngIf="registerFormGet('surname')?.errors && registerFormGet('surname')?.touched" class="mb-3 text-danger">
+                            <div *ngIf="registerFormGet('surname')?.errors?.required">El campo Apellido es obligatorio.</div>
+                        </div>
                     </div>
 
-                    <div class="form-group input-group mb-2">
-                        <span class="input-group-text"> <i class="fa fa-envelope fa-fw"></i> </span>
-                        <input name="email" id="email" class="form-control" placeholder="Email" type="email" required />
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-home fa-fw"></i> </span>
+                            <input name="address" id="address" class="form-control" placeholder="Dirección" type="text" formControlName="address" required />
+                        </div>
+
+                        <div *ngIf="registerFormGet('address')?.errors && registerFormGet('address')?.touched" class="mb-3 text-danger">
+                            <div *ngIf="registerFormGet('address')?.errors?.required">El campo Dirección es obligatorio.</div>
+                        </div>
                     </div>
 
-                    <div class="form-group input-group mb-2">
-                        <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
-                        <input name="pass" id="pass" class="form-control" placeholder="Contraseña" type="password" required />
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-envelope fa-fw"></i> </span>
+                            <input name="email" id="email" class="form-control" placeholder="E-Mail" type="email" formControlName="email" required />
+                        </div>
+    
+                        <div *ngIf="registerFormGet('email')?.errors && registerFormGet('email')?.touched" class="mb-3 text-danger">
+                            <div *ngIf="registerFormGet('email')?.errors?.required">El campo E-Mail es obligatorio.</div>
+                            <div *ngIf="registerFormGet('email')?.errors?.pattern">Ingresa un E-Mail válido.</div>
+                        </div>
                     </div>
 
-                    <div class="form-group input-group">
-                        <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
-                        <input type="confirmPass" id="confirmPass" class="form-control" placeholder="Confirmar contraseña" type="password" required />
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
+                            <input name="password" id="password" class="form-control" placeholder="Contraseña" type="password" formControlName="password" required />
+                        </div>
+    
+                        <div *ngIf="registerFormGet('password')?.errors && registerFormGet('password')?.touched" class="mb-3 text-danger">
+                            <div *ngIf="registerFormGet('password')?.errors?.required">El campo Contraseña es obligatorio.</div>
+                            <div *ngIf="registerFormGet('password')?.errors?.minlength">La contraseña debe ser de al menos 6 caracteres.</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group input-group mb-2">
+                            <span class="input-group-text"> <i class="fa fa-lock fa-fw"></i> </span>
+                            <input type="confirmPass" id="confirmPass" class="form-control" placeholder="Confirmar contraseña" type="password" formControlName="confirmPassword" required />
+                        </div>
+
+                        <div *ngIf="registerFormGet('confirmPassword')?.errors && registerFormGet('confirmPassword')?.touched" class="mb-3 text-danger">
+                            <div *ngIf="registerFormGet('confirmPassword')?.errors?.required">El campo Confirmar constraseña es obligatorio.</div>
+                            <div *ngIf="registerFormGet('confirmPassword')?.errors?.minlength">La contraseña debe ser de al menos 6 caracteres.</div>
+                            <div *ngIf="registerForm.controls.confirmPassword.errors?.passwordMismatch">Las contraseñas no coinciden.</div>
+                        </div>
                     </div>
 
                     <div class="form-group text-center my-4">
-                        <input type="submit" class="btn btn-primary btn-block" value="Registrarse" />
+                        <input type="submit" class="btn btn-primary btn-block" value="Registrarse" [disabled]="registerForm.invalid" />
                     </div>
 
                     <p class="text-center">¿Ya tenés una cuenta?
