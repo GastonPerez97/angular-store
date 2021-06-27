@@ -22,3 +22,9 @@
         margin: 6px 0;
     }
 }
+
+@media screen and (max-width: 340px) {
+    .product-btn-container {
+       flex-direction: column;
+    }
+}

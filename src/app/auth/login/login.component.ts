@@ -31,17 +31,11 @@ export class LoginComponent implements OnInit {
 
         try {
             const user = await this.authService.loginUser(email, password);
-
-            if (user.message && user.code) {
-                throw user;
+            
+            if (user.user?.emailVerified) {
+                this.router.navigate(['/']);
             } else {
-                if (user && user.user?.emailVerified) {
-                    this.router.navigate(['/']);
-                } else if (user) {
-                    this.router.navigate(['/verificar-email']);
-                } else {
-                    this.router.navigate(['/registrarse']);
-                }
+                this.router.navigate(['/verificar-email']);
             }
         } catch (error) {
             Swal.fire({
