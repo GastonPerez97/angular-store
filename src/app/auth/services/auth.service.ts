@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { first } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
     authErrors: any = {
         'auth/invalid-email': 'El formato del E-Mail no es válido.',
-        'auth/wrong-password': 'Contraseña incorrecta.',
+        'auth/wrong-password': 'El E-Mail o la contraseña es incorrecta.',
         'auth/weak-password': 'La contraseña debe tener al menos 6 caracteres.',
-        'auth/user-not-found': 'No se encontró el usuario con el E-Mail ingresado.',
+        'auth/user-not-found': 'El E-Mail o la contraseña es incorrecta.',
         'auth/email-already-in-use': 'El E-Mail ingresado ya está siendo usado por otra cuenta.',
         'auth/too-many-requests': 'Se han realizado muchas solicitudes en poco tiempo. Intentalo más tarde.'
     };
@@ -15,11 +16,7 @@ export class AuthService {
     constructor(public afAuth: AngularFireAuth) { }
 
     async loginUser(email: string, password: string) {
-        try {
-            return await this.afAuth.signInWithEmailAndPassword(email, password);
-        } catch (error) {
-            return error;
-        }
+        return await this.afAuth.signInWithEmailAndPassword(email, password);
     }
 
     async registerUser(email: string, password: string) {
@@ -30,7 +27,6 @@ export class AuthService {
         } catch (error) {
             return error;
         }
-
     }
 
     async logoutUser() {
@@ -54,6 +50,18 @@ export class AuthService {
             return this.afAuth.sendPasswordResetEmail(email);
         } catch (error) {
             return error;
+        }
+    }
+
+    async getCurrentUser() {
+        return this.afAuth.authState.pipe(first()).toPromise();
+    }
+
+    async logoutIfEmailNotVerified() {
+        const user = await this.getCurrentUser();
+        
+        if (!user?.emailVerified) {
+            this.logoutUser();
         }
     }
 }

@@ -10,6 +10,7 @@ import { DetalleProductoComponent } from './detalle-producto/detalle-producto.co
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { NewProductComponent } from './newProduct/new.product.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: "restablecer-contraseña", component: ForgotPasswordComponent },
     { path: "detalle", component: DetalleProductoComponent},
     { path: "nuevo-producto", component: NewProductComponent},
+    { path: "carrito", component: CarritoComponent},
     { path: "**", component: NotFoundComponent }
 ];
 

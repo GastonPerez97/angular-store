@@ -1,0 +1,51 @@
+<section class="mt-5">
+    <div>  
+        <div class="pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 p-1 p-lg-5 bg-white rounded shadow-sm mb-5">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="p-2 px-3 text-uppercase">Producto</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase text-normal">Cantidad</div>
+                                            <div class="py-2 text-uppercase text-mobile">C.</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Total</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase text-normal">Eliminar</div>
+                                            <div class="py-2 text-uppercase text-mobile">E.</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr app-carrito-producto></tr>
+                                    <tr app-carrito-producto></tr>
+                                    <tr app-carrito-producto></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-8 col-lg-6 float-end mb-5">
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Resumen del pedido</div>
+                    <div class="p-4">
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex justify-content-between py-3 border-bottom">
+                                <strong class="text-muted">Total</strong>
+                                <h5 class="font-weight-bold">$49,500.00</h5>
+                            </li>
+                        </ul>
+                        <a class="btn btn-dark rounded-pill py-2 btn-block">Confirmar compra</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
