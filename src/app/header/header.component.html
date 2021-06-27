@@ -1,6 +1,6 @@
 <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light py-4">
     <header class="container px-0">
-        <a class="navbar-brand" routerLink="/">BRAND LOGO</a>
+        <a class="navbar-brand brand" routerLink="/">AngularStore</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                 <div class="text-center auth-btn">
                     <div class="d-flex align-items-center justify-content-center mb-3 mb-sm-0">
                         <p class="m-0">{{ user.email }}</p>
-                        <a class="text-decoration-none btn btn-outline-primary ms-3 mx-0 mx-sm-3"><i class="fa fa-shopping-cart"></i></a>
+                        <a routerLink="/carrito" class="text-decoration-none btn btn-outline-primary ms-3 mx-0 mx-sm-3"><i class="fa fa-shopping-cart"></i></a>
                     </div>
 
                     <button routerLink="/ingresar" type="button" class="btn btn-outline-primary" (click)="logoutUser()">
