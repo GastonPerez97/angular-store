@@ -10,15 +10,6 @@ export class CarritoComponent implements OnInit {
     products: Product[];
     total: number;
 
-    // productoTest = {
-    //     id: 1,
-    //     name: 'TECLADO REDRAGON SHIVA K512 RGB',
-    //     category: 'Teclados',
-    //     unitPrice: 5500,
-    //     quantity: 1,
-    //     totalPrice: 0
-    // }
-
     constructor(private carritoService: CarritoService) {
         this.total = 0;
         this.products = [];
@@ -35,8 +26,5 @@ export class CarritoComponent implements OnInit {
         this.carritoService.getProducts$().subscribe(products => {
             this.products = products;
         });
-
-        // localStorage.setItem("1", JSON.stringify(this.productoTest));
     }
-
 }

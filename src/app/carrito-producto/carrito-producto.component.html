@@ -3,7 +3,7 @@
         <img src="/assets/img/k512_shiva_rgb.png" alt="" width="70" class="img-fluid rounded shadow-sm product-img">
 
         <div class="ms-3 d-inline-block align-middle">
-            <h5 class="mb-0">
+            <h5 class="mb-0 product-name">
                 <a class="text-dark align-middle text-decoration-none">{{ product.name }}</a>
             </h5>
             <div class="d-flex">
@@ -14,10 +14,15 @@
     </div>
 </th>
 
-<td class="border-0 align-middle d-flex align-items-center justify-content-between">
-    <button class="btn btn-outline-dark btn-sm" (click)="decrementQty()">-</button>
-    <strong>{{ product.quantity }}</strong>
-    <button class="btn btn-outline-dark btn-sm" (click)="incrementQty()">+</button>
+<td class="border-0 d-flex align-items-center justify-content-between mt-4 mt-md-4">
+    <strong class="text-dark fs-5 cursor-pointer" (click)="decrementQty()">-</strong>
+    <strong class="quantity">{{ product.quantity }}</strong>
+    <strong class="text-dark fs-5 cursor-pointer" (click)="incrementQty()">+</strong>
 </td>
-<td class="border-0 align-middle"><strong>{{ product.totalPrice | currency }}</strong></td>
-<td class="border-0 align-middle"><a class="text-dark"><i class="fa fa-trash fa-lg cursor-pointer" (click)="removeFromCart()"></i></a></td>
+
+<td class="border-0 align-middle text-center"><strong>{{ product.totalPrice | currency }}</strong></td>
+
+<td class="border-0 align-middle text-center">
+    <a class="text-dark"><i class="fa fa-trash fa-lg cursor-pointer" (click)="removeFromCart()"></i>
+    </a>
+</td>
