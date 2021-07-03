@@ -4,13 +4,20 @@
 
         <div class="ms-3 d-inline-block align-middle">
             <h5 class="mb-0">
-                <a class="text-dark align-middle text-decoration-none">TECLADO REDRAGON SHIVA K512 RGB</a>
+                <a class="text-dark align-middle text-decoration-none">{{ product.name }}</a>
             </h5>
-            <span class="text-muted font-weight-normal font-italic d-block">Categoría: Teclados</span>
+            <div class="d-flex">
+                <span class="text-muted font-weight-normal font-italic d-block me-1">Categoría:</span>
+                <span>{{ product.category }}</span>
+            </div>
         </div>
     </div>
 </th>
 
-<td class="border-0 align-middle"><strong>3</strong></td>
-<td class="border-0 align-middle"><strong>$5.500</strong></td>
-<td class="border-0 align-middle"><a class="text-dark"><i class="fa fa-trash fa-lg"></i></a></td>
+<td class="border-0 align-middle d-flex align-items-center justify-content-between">
+    <button class="btn btn-outline-dark btn-sm" (click)="decrementQty()">-</button>
+    <strong>{{ product.quantity }}</strong>
+    <button class="btn btn-outline-dark btn-sm" (click)="incrementQty()">+</button>
+</td>
+<td class="border-0 align-middle"><strong>{{ product.totalPrice | currency }}</strong></td>
+<td class="border-0 align-middle"><a class="text-dark"><i class="fa fa-trash fa-lg cursor-pointer" (click)="removeFromCart()"></i></a></td>
