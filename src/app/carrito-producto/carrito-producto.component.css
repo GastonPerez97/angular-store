@@ -6,6 +6,10 @@
     font-size: 20px;
 }
 
+.user-select-none {
+    user-select: none;
+}
+
 @media screen and (max-width: 767px) {
     .product-name {
         font-size: 15px;

@@ -15,9 +15,9 @@
 </th>
 
 <td class="border-0 d-flex align-items-center justify-content-between mt-4 mt-md-4">
-    <strong class="text-dark fs-5 cursor-pointer" (click)="decrementQty()">-</strong>
+    <strong class="text-dark fs-5 cursor-pointer user-select-none" (click)="decrementQty()">-</strong>
     <strong class="quantity">{{ product.quantity }}</strong>
-    <strong class="text-dark fs-5 cursor-pointer" (click)="incrementQty()">+</strong>
+    <strong class="text-dark fs-5 cursor-pointer user-select-none" (click)="incrementQty()">+</strong>
 </td>
 
 <td class="border-0 align-middle text-center"><strong>{{ product.totalPrice | currency }}</strong></td>
