@@ -2,6 +2,10 @@
     display: none;
 }
 
+.th-width {
+    width: 14%;
+}
+
 @media screen and (max-width: 525px) {
     .text-mobile {
         display: block;

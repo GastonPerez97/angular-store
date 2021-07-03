@@ -2,8 +2,26 @@
     cursor: pointer;
 }
 
+.product-name {
+    font-size: 20px;
+}
+
+.user-select-none {
+    user-select: none;
+}
+
+@media screen and (max-width: 767px) {
+    .product-name {
+        font-size: 15px;
+    }
+}
+
 @media screen and (max-width: 525px) {
     .product-img {
         display: none;
+    }
+
+    .quantity {
+        margin: 0 15px 0 15px;
     }
 }

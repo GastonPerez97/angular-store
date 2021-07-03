@@ -61,10 +61,7 @@ export class CarritoService {
     incrementQty(id: string) {
         var item = this.get(id);
         item.quantity++;
-        item.totalPrice = item.unitPrice * item.quantity;
-        this.remove(id);
-        this.add(item);
-        this.updateTotalAndProducts();
+        this.updateProduct(item, id);
     }
 
     decrementQty(id: string) {
@@ -76,11 +73,15 @@ export class CarritoService {
             return;
         } else {
             item.quantity--;
-            item.totalPrice = item.unitPrice * item.quantity;
-            this.remove(id);
-            this.add(item);
-            this.updateTotalAndProducts();
+            this.updateProduct(item, id);
         }
+    }
+
+    updateProduct(item: Product, id: string) {
+        item.totalPrice = item.unitPrice * item.quantity;
+        this.remove(id);
+        this.add(item);
+        this.updateTotalAndProducts();
     }
 
     getTotal$(): Observable<number> {
