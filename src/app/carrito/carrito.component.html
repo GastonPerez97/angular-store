@@ -1,7 +1,7 @@
 <section class="mt-5">
     <div>  
         <div class="pb-5">
-            <div class="container">
+            <div class="container" *ngIf="products.length !== 0; else empty">
                 <div class="row">
                     <div class="col-12 p-1 p-lg-5 bg-white rounded shadow-sm mb-5">
                         <div class="table-responsive">
@@ -24,10 +24,8 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr app-carrito-producto></tr>
-                                    <tr app-carrito-producto></tr>
-                                    <tr app-carrito-producto></tr>
+                                <tbody *ngFor="let product of products">
+                                    <tr app-carrito-producto [product]="product"></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -39,7 +37,7 @@
                         <ul class="list-unstyled mb-4">
                             <li class="d-flex justify-content-between py-3 border-bottom">
                                 <strong class="text-muted">Total</strong>
-                                <h5 class="font-weight-bold">$49,500.00</h5>
+                                <h5 class="font-weight-bold">{{ total | currency }}</h5>
                             </li>
                         </ul>
                         <a class="btn btn-dark rounded-pill py-2 btn-block">Confirmar compra</a>
@@ -49,3 +47,10 @@
         </div>
     </div>
 </section>
+
+<ng-template #empty>
+    <div class="text-center">
+        <p class="display-6">Tu carrito está vacio.</p>
+        <button routerLink="/productos" class="btn btn-primary btn-lg mt-4">Comprar productos</button>
+    </div>
+</ng-template>
