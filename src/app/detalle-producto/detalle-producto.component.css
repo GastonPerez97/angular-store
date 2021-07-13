@@ -5,7 +5,6 @@
 }
 
 .descripcion {
-    width: 90%;
     text-align: justify;
 }
 
@@ -21,5 +20,6 @@
     }
     .descripcion {
         margin: 0 auto;
+        width: 90%;
     }
 }
