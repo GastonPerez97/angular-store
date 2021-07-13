@@ -9,64 +9,16 @@
                 <div class="pb-3 mb-3 border-bottom categories-title">
                     <span class="fs-5 fw-semibold">Categorías</span>
                 </div>
-    
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#monitores-collapse" aria-expanded="false">
-                    Monitores
-                    </button>
-                    
-                    <div class="collapse" id="monitores-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">60 Hz</a></li>
-                            <li><a href="#" class="link-dark rounded">144 Hz</a></li>
-                            <li><a href="#" class="link-dark rounded">240 Hz</a></li>
-                        </ul>
-                    </div>
+
+                <li class="mb-1 hover-bold">
+                    <a routerLink="/productos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link link-dark">Mostrar todo</a>
                 </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#mothers-collapse" aria-expanded="false">
-                    Mothers
-                    </button>
-                    <div class="collapse" id="mothers-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">AMD</a></li>
-                            <li><a href="#" class="link-dark rounded">Intel</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#mouses-collapse" aria-expanded="false">
-                        Mouses
-                    </button>
-                    <div class="collapse" id="mouses-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">Oficina</a></li>
-                            <li><a href="#" class="link-dark rounded">Gamer</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#placas-de-video-collapse" aria-expanded="false">
-                    Placas de video
-                    </button>
-                    <div class="collapse" id="placas-de-video-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">Intel</a></li>
-                            <li><a href="#" class="link-dark rounded">Radeon AMD</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#teclados-collapse" aria-expanded="false">
-                        Teclados
-                    </button>
-                    <div class="collapse" id="teclados-collapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">Mecánicos</a></li>
-                            <li><a href="#" class="link-dark rounded">Membrana</a></li>
-                        </ul>
-                    </div>
-                </li>
+
+                <app-sidebar-category></app-sidebar-category>
+                <app-sidebar-category></app-sidebar-category>
+                <app-sidebar-category></app-sidebar-category>
+                <app-sidebar-category></app-sidebar-category>
+                
                 <li class="border-top my-3"></li>
             </ul>
         </div>

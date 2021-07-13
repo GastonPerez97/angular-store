@@ -1,12 +1,12 @@
-<p class="titulo">TECLADO REDRAGON SHIVA K512 RGB</p>
-<p><span>$5.500</span></p>
-<p> <span>18</span>  Cuotas de <span>$638,28</span></p>
+<p class="titulo">{{ product.name }}</p>
+<p><span>{{ product.unitPrice | currency }}</span></p>
+<p> <span>12</span>  cuotas sin interés de <span>{{ product.unitPrice / 12 | currency}}</span></p>
 <p><a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver Medios de Pago</a></p>
 <hr>
 
-<p>Cantidad</p>
-<input type="number">
+<p>Cantidad:</p>
+<input type="number" class="form-control" [(ngModel)]="product.quantity" min="1">
 <br>
-<button class="btn btn-primary mt-3">AGREGAR AL CARRITO</button>
+<button class="btn btn-primary mt-3" (click)="addToCart()">AGREGAR AL CARRITO</button>
 
 

@@ -1,0 +1,9 @@
+.active {
+    font-weight: bold;
+    background-color: rgba(0,0,0,.05);
+    border-radius: 5px;
+}
+
+.hover-bold a:hover {
+    font-weight: bold;
+}
