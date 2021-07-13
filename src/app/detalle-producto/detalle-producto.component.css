@@ -1,22 +1,25 @@
 .datos{
-  margin-top: 5%;
-  padding-left: 5%;
-  padding-right: 10%;
+    margin-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.descripcion{
- width: 90%;
- text-align: justify;
+.descripcion {
+    width: 90%;
+    text-align: justify;
 }
 
-.titulo-descripcion{
-  font-weight: bold;
+.titulo-descripcion {
+    font-weight: bold;
 }
 
 @media screen and (max-width: 991px) {
- .principal{
-   display: flex;
-   flex-direction: column-reverse;
-
- }
+    .principal {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3em;
+    }
+    .descripcion {
+        margin: 0 auto;
+    }
 }
