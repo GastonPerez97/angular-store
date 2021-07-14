@@ -32,6 +32,7 @@ import { CarritoProductoComponent } from './carrito-producto/carrito-producto.co
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarCategoryComponent } from './sidebar/sidebar-category/sidebar-category.component';
 import { SliderBrandComponent } from './slider-brand/slider-brand.component';
+import { HomeCategoryComponent } from './home/home-category/home-category.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { SliderBrandComponent } from './slider-brand/slider-brand.component';
     CarritoComponent,
     CarritoProductoComponent,
     SidebarCategoryComponent,
-    SliderBrandComponent
+    SliderBrandComponent,
+    HomeCategoryComponent
   ],
   imports: [
     BrowserModule,
