@@ -15,11 +15,11 @@ import { CarritoComponent } from './carrito/carrito.component';
 const routes: Routes = [
     { path: "", component: HomeComponent },
     { path: "productos", component: ProductosComponent },
+    { path: "productos/:category", component: ProductosComponent },
     { path: "ingresar", component: LoginComponent },
     { path: "registrarse", component: RegisterComponent },
     { path: "verificar-email", component: SendEmailComponent },
     { path: "restablecer-contraseña", component: ForgotPasswordComponent },
-    { path: "detalle", component: DetalleProductoComponent},
     { path: "detalle/:id", component: DetalleProductoComponent},
     { path: "nuevo-producto", component: NewProductComponent},
     { path: "carrito", component: CarritoComponent},

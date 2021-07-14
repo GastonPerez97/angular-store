@@ -1,6 +1,7 @@
 <div class="col">
     <div class="card h-100 mb-3">
-        <img [src]="producto.urlImage" class="img-fluid product-img" alt="Imagen del producto">
+        <img [src]="producto.urlImage" class="img-fluid product-img py-2" alt="Imagen del producto">
+
         <div class="card-body">
             <h5 class="card-title">{{ producto?.name }}</h5>
             <p class="card-text">{{ producto?.price | currency }}</p>
