@@ -1,3 +1,4 @@
+import { Component, Input, OnInit } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -9,7 +10,7 @@ import { CarritoService, Product } from '../services/carrito.service';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-    product: Product;
+    @Input() dataEntrante:any
 
     constructor(private carritoService: CarritoService, private router: Router) {
         this.product = {

@@ -29,6 +29,7 @@ import { NewProductComponent } from './newProduct/new.product.component';
 import { NewProductFormComponent } from './newProduct/new.product.form.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CarritoProductoComponent } from './carrito-producto/carrito-producto.component';
+import { HttpClientModule } from '@angular/common/http';
 import { SidebarCategoryComponent } from './sidebar/sidebar-category/sidebar-category.component';
 
 @NgModule({
@@ -61,7 +62,8 @@ import { SidebarCategoryComponent } from './sidebar/sidebar-category/sidebar-cat
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

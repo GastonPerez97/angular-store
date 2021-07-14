@@ -1,6 +1,6 @@
-<p class="titulo">{{ product.name }}</p>
-<p><span>{{ product.unitPrice | currency }}</span></p>
-<p> <span>12</span>  cuotas sin interés de <span>{{ product.unitPrice / 12 | currency}}</span></p>
+<p class="titulo">{{detalleProducto?.name}}</p>
+<p><span>$ {{detalleProducto?.price}}</span></p>
+<p> <span>12</span>  Cuotas de <span>${{(detalleProducto?.price/12)}}</span></p>
 <p><a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver Medios de Pago</a></p>
 <hr>
 

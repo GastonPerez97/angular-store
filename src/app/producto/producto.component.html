@@ -2,11 +2,12 @@
     <div class="card h-100 mb-3">
         <img src="/assets/img/default-product-image.jpg" class="card-img-top" alt="Imagen del producto">
         <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.unitPrice | currency }}</p>
+            <h5 class="card-title">{{dataEntrante?.name}}</h5>
+            <p class="card-text">{{dataEntrante?.description}}</p>
+            <p class="card-text">$ {{dataEntrante?.price}}</p>
             <div class="product-btn-container">
-                <a routerLink="/detalle" class="btn btn-outline-primary product-btn">Ver Detalles</a>
-                <a class="btn btn-primary product-btn" (click)="addToCart()"><i class="fa fa-shopping-cart me-2"></i>Agregar</a>
+                <a routerLink="/detalle/{{dataEntrante?.id}}" class="btn btn-outline-primary product-btn">Ver Detalles</a>
+                <a href="#" class="btn btn-primary product-btn">Comprar</a>
             </div>
         </div>
     </div>

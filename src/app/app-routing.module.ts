@@ -20,6 +20,7 @@ const routes: Routes = [
     { path: "verificar-email", component: SendEmailComponent },
     { path: "restablecer-contraseña", component: ForgotPasswordComponent },
     { path: "detalle", component: DetalleProductoComponent},
+    { path: "detalle/:id", component: DetalleProductoComponent},
     { path: "nuevo-producto", component: NewProductComponent},
     { path: "carrito", component: CarritoComponent},
     { path: "**", component: NotFoundComponent }

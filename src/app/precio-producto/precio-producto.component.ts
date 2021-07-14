@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RestService } from '../services/rest.service';
 import { CarritoService, Product } from '../services/carrito.service';
 
 @Component({
@@ -8,23 +9,24 @@ import { CarritoService, Product } from '../services/carrito.service';
   styleUrls: ['./precio-producto.component.css']
 })
 export class PrecioProductoComponent implements OnInit {
-    product: Product;
+  public detalleProducto:any = []
+  public id:any
 
-    constructor(private carritoService: CarritoService, private router: Router) {
-        this.product = {
-            id: 1,
-            name: "titulo hardcodeado",
-            category: "categoria hardcodeada",
-            unitPrice: 1337,
-            quantity: 1,
-            totalPrice: 0
-        }
-        
-        this.product.totalPrice = this.product.unitPrice;
+  constructor(private _route: ActivatedRoute, private RestService:RestService) {
+    this.id = this._route.snapshot.paramMap.get('id');
     }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+    this.cargarData();
+  }
+
+  public cargarData(){
+    this.RestService.get(`http://localhost:3000/taller-web-2/api/product/${this.id}`)
+    .subscribe(respuesta => {
+      console.log(respuesta);
+      this.detalleProducto = respuesta;
+    })
+  }
 
     addToCart() {
         this.calcTotalPrice();
