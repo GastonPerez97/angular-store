@@ -30,6 +30,7 @@ import { NewProductFormComponent } from './newProduct/new.product.form.component
 import { CarritoComponent } from './carrito/carrito.component';
 import { CarritoProductoComponent } from './carrito-producto/carrito-producto.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SidebarCategoryComponent } from './sidebar/sidebar-category/sidebar-category.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     NewProductComponent,
     NewProductFormComponent,
     CarritoComponent,
-    CarritoProductoComponent
+    CarritoProductoComponent,
+    SidebarCategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from '../services/rest.service';
+import { CarritoService, Product } from '../services/carrito.service';
 
 @Component({
   selector: 'app-precio-producto',
@@ -27,4 +28,13 @@ export class PrecioProductoComponent implements OnInit {
     })
   }
 
+    addToCart() {
+        this.calcTotalPrice();
+        this.carritoService.add(this.product);
+        this.router.navigate(['/carrito']);
+    }
+
+    private calcTotalPrice() {
+        this.product.totalPrice = this.product.unitPrice * this.product.quantity;
+    }
 }

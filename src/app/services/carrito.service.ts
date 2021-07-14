@@ -16,10 +16,12 @@ export interface Product {
 export class CarritoService {
     private total$: Subject<number>;
     private products$: Subject<Product[]>;
+    private countProducts$: Subject<number>;
 
     constructor() {
         this.total$ = new Subject();
         this.products$ = new Subject();
+        this.countProducts$ = new Subject();
     }
 
     add(item: any) {
@@ -58,6 +60,17 @@ export class CarritoService {
         return total;
     }
 
+    getCountProducts() {
+        const items: any = this.getAll();
+        var count = 0;
+
+        items.forEach((item: Product) => {
+            count += 1;
+        });
+
+        return count;
+    }
+
     incrementQty(id: string) {
         var item = this.get(id);
         item.quantity++;
@@ -92,8 +105,13 @@ export class CarritoService {
         return this.products$.asObservable();
     }
 
+    getCountProducts$(): Observable<number> {
+        return this.countProducts$.asObservable();
+    }
+
     updateTotalAndProducts() {
         this.total$.next(this.getTotal());
         this.products$.next(this.getAll());
+        this.countProducts$.next(this.getCountProducts());
     }
 }

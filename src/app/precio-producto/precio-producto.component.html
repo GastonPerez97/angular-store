@@ -4,9 +4,9 @@
 <p><a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver Medios de Pago</a></p>
 <hr>
 
-<p>Cantidad</p>
-<input type="number">
+<p>Cantidad:</p>
+<input type="number" class="form-control" [(ngModel)]="product.quantity" min="1">
 <br>
-<button class="btn btn-primary mt-3">AGREGAR AL CARRITO</button>
+<button class="btn btn-primary mt-3" (click)="addToCart()">AGREGAR AL CARRITO</button>
 
 

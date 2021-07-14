@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
+import { CarritoService, Product } from '../services/carrito.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,19 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class HeaderComponent {
     public user$: Observable<any> = this.authService.afAuth.user;
+    public countProducts: number;
 
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private authService: AuthService, private router: Router, private carritoService: CarritoService) {
+        this.countProducts = 0;
+    }
+
+    ngOnInit(): void {
+        this.countProducts = this.carritoService.getCountProducts();
+
+        this.carritoService.getCountProducts$().subscribe(count => {
+            this.countProducts = count;
+        });
+    }
 
     async logoutUser() {
         try {
