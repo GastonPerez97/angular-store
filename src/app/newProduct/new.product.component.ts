@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-new-product',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProductComponent implements OnInit {
 
-  constructor() { }
+    constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+    async ngOnInit(): Promise<void> {
+        const user = await this.authService.getCurrentUser();
+
+        if (!user || user!.email !== 'tallerweb2proyecto@gmail.com') {
+            this.router.navigate(['/']);
+        }
+    }
 
 }
