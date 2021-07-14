@@ -20,7 +20,7 @@ export class PrecioProductoComponent implements OnInit {
   }
 
   public cargarData(){
-    this.RestService.get('http://localhost:3000/taller-web-2/api/product/1')
+    this.RestService.get(`http://localhost:3000/taller-web-2/api/product/${this.id}`)
     .subscribe(respuesta => {
       console.log(respuesta);
       this.detalleProducto = respuesta;
