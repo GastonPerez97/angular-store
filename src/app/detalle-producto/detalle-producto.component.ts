@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CarritoService, Product } from '../services/carrito.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RestService } from '../services/rest.service';
+import { CarritoService } from '../services/carrito.service';
+import { Product } from "../interfaces/Product";
 
 @Component({
   selector: 'app-detalle-producto',
@@ -8,22 +10,34 @@ import { CarritoService, Product } from '../services/carrito.service';
   styleUrls: ['./detalle-producto.component.css']
 })
 export class DetalleProductoComponent implements OnInit {
-    product: Product;
+    public producto: Product;
+    public id: any;
 
-    constructor(private carritoService: CarritoService, private router: Router) {
-        this.product = {
-            id: 1,
-            name: "titulo hardcodeado",
-            category: "categoria hardcodeada",
-            unitPrice: 1337,
+    constructor(private _route: ActivatedRoute, private RestService: RestService,
+                private carritoService: CarritoService, private router: Router) {
+        this.producto = {
+            id: 0,
+            name: "",
+            category: "",
+            price: 0,
+            description: "",
+            urlImage: "",
             quantity: 1,
             totalPrice: 0
         }
-        
-        this.product.totalPrice = this.product.unitPrice;
+
+        // if (this._route.snapshot.paramMap.get('id') != number)
+        this.id = this._route.snapshot.paramMap.get('id');
     }
 
     ngOnInit(): void {
+        this.getProduct();
     }
 
+    public getProduct() {
+        this.RestService.get(`/taller-web-2/api/product/${this.id}`)
+        .subscribe(producto => {
+            this.producto = producto;
+        });
+    }
 }

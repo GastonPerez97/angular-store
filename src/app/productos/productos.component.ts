@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../interfaces/Product';
 import { RestService } from '../services/rest.service';
 
 @Component({
@@ -7,21 +8,20 @@ import { RestService } from '../services/rest.service';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-public listaProductos:any = []
+    productos: Product[];
 
-  constructor(private RestService:RestService) { }
+    constructor(private RestService:RestService) {
+        this.productos = [];
+    }
 
-  ngOnInit(): void {
-this.cargarData();
-  }
+    ngOnInit(): void {
+        this.getAllProducts();
+    }
 
-  public cargarData(){
-    this.RestService.get('http://localhost:3000/taller-web-2/api/products/1')
-    .subscribe(respuesta => {
-      console.log(respuesta);
-      this.listaProductos = respuesta;
-    })
-  }
-
-
+    public getAllProducts() {
+        this.RestService.get('/taller-web-2/api/products')
+        .subscribe(productos => {
+            this.productos = productos;
+        })
+    }
 }

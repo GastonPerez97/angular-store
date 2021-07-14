@@ -1,12 +1,10 @@
-<p class="titulo">{{detalleProducto?.name}}</p>
-<p><span>$ {{detalleProducto?.price}}</span></p>
-<p> <span>12</span>  Cuotas de <span>${{(detalleProducto?.price/12)}}</span></p>
-<p><a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264">Ver Medios de Pago</a></p>
+<p class="titulo">{{ producto.name }}</p>
+<p>Precio por unidad: <span>{{ producto.price | currency }}</span></p>
+<p><span>12</span> cuotas de <span>{{ (producto.price / 12) | currency }}</span></p>
+<p><a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264" target="_blank">Ver Medios de Pago</a></p>
 <hr>
 
 <p>Cantidad:</p>
-<input type="number" class="form-control" [(ngModel)]="product.quantity" min="1">
+<input type="number" class="form-control" [(ngModel)]="producto.quantity" min="1">
 <br>
 <button class="btn btn-primary mt-3" (click)="addToCart()">AGREGAR AL CARRITO</button>
-
-

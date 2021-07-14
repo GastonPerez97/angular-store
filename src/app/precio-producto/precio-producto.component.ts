@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from '../services/rest.service';
-import { CarritoService, Product } from '../services/carrito.service';
+import { CarritoService } from '../services/carrito.service';
+import { Product } from "../interfaces/Product";
 
 @Component({
   selector: 'app-precio-producto',
@@ -9,32 +10,44 @@ import { CarritoService, Product } from '../services/carrito.service';
   styleUrls: ['./precio-producto.component.css']
 })
 export class PrecioProductoComponent implements OnInit {
-  public detalleProducto:any = []
-  public id:any
+    public producto: Product;
+    public id: any;
 
-  constructor(private _route: ActivatedRoute, private RestService:RestService) {
-    this.id = this._route.snapshot.paramMap.get('id');
+    constructor(private _route: ActivatedRoute, private RestService: RestService,
+                private carritoService: CarritoService, private router: Router) {
+        this.producto = {
+            id: 0,
+            name: "",
+            category: "",
+            price: 0,
+            description: "",
+            urlImage: "",
+            quantity: 0,
+            totalPrice: 0
+        }
+
+        this.id = this._route.snapshot.paramMap.get('id');
     }
 
-  ngOnInit(): void {
-    this.cargarData();
-  }
+    ngOnInit(): void {
+        this.getProduct();
+    }
 
-  public cargarData(){
-    this.RestService.get(`http://localhost:3000/taller-web-2/api/product/${this.id}`)
-    .subscribe(respuesta => {
-      console.log(respuesta);
-      this.detalleProducto = respuesta;
-    })
-  }
+    public getProduct() {
+        this.RestService.get(`/taller-web-2/api/product/${this.id}`)
+        .subscribe(producto => {
+            this.producto = producto;
+            this.producto.quantity = 1;
+        });
+    }
 
     addToCart() {
         this.calcTotalPrice();
-        this.carritoService.add(this.product);
+        this.carritoService.add(this.producto);
         this.router.navigate(['/carrito']);
     }
 
     private calcTotalPrice() {
-        this.product.totalPrice = this.product.unitPrice * this.product.quantity;
+        this.producto.totalPrice = this.producto.price * this.producto.quantity;
     }
 }

@@ -3,6 +3,12 @@
     justify-content: space-around;
  }
 
+.product-img {
+    width: 100%;
+    height: 11vw;
+    object-fit: contain;
+}
+
 @media screen and (max-width: 1199px) {
     .product-btn-container {
        flex-direction: column;
