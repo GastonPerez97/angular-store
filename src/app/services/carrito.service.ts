@@ -1,14 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-
-export interface Product {
-    id: number,
-    name: string,
-    category: string,
-    unitPrice: number,
-    quantity: number,
-    totalPrice: number
-}
+import { Product } from '../interfaces/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -91,7 +83,7 @@ export class CarritoService {
     }
 
     updateProduct(item: Product, id: string) {
-        item.totalPrice = item.unitPrice * item.quantity;
+        item.totalPrice = item.price * item.quantity;
         this.remove(id);
         this.add(item);
         this.updateTotalAndProducts();

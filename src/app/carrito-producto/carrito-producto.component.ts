@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CarritoService, Product } from '../services/carrito.service';
+import { CarritoService } from '../services/carrito.service';
+import { Product } from "../interfaces/Product";
 
 @Component({
   selector: '[app-carrito-producto]',
@@ -15,8 +16,10 @@ export class CarritoProductoComponent implements OnInit {
             id: 0,
             name: "",
             category: "",
-            unitPrice: 0,
-            quantity: 0,
+            price: 0,
+            description: "",
+            urlImage: "",
+            quantity: 1,
             totalPrice: 0
         }
     }

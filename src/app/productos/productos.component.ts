@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../interfaces/Product';
 import { RestService } from '../services/rest.service';
 
 @Component({
@@ -7,21 +9,31 @@ import { RestService } from '../services/rest.service';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-public listaProductos:any = []
+    productos: Product[];
+    categoria: any;
 
-  constructor(private RestService:RestService) { }
+    constructor(private RestService: RestService, private _route: ActivatedRoute) {
+        this.productos = [];
+    }
 
-  ngOnInit(): void {
-this.cargarData();
-  }
+    ngOnInit(): void {
+        this._route.paramMap.subscribe(params => {
+            this.categoria = params.get('category');
+            this.categoria != null ? this.getProductsByCategory(this.categoria) : this.getAllProducts();
+        });
+    }
 
-  public cargarData(){
-    this.RestService.get('http://localhost:3000/taller-web-2/api/products/1')
-    .subscribe(respuesta => {
-      console.log(respuesta);
-      this.listaProductos = respuesta;
-    })
-  }
+    public getAllProducts() {
+        this.RestService.get('/taller-web-2/api/products')
+        .subscribe(productos => {
+            this.productos = productos;
+        });
+    }
 
-
+    public getProductsByCategory(category: any) {
+        this.RestService.get(`/taller-web-2/api/products/${category}`)
+        .subscribe(productos => {
+            this.productos = productos;
+        });
+    }
 }
