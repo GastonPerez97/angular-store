@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from '../services/rest.service';
 import { CarritoService } from '../services/carrito.service';
 import { Product } from "../interfaces/Product";
+import { AuthService } from '../auth/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-precio-producto',
@@ -14,7 +16,8 @@ export class PrecioProductoComponent implements OnInit {
     public id: any;
 
     constructor(private _route: ActivatedRoute, private RestService: RestService,
-                private carritoService: CarritoService, private router: Router) {
+                private carritoService: CarritoService, private router: Router,
+                private authService: AuthService) {
         this.producto = {
             id: 0,
             name: "",
@@ -41,10 +44,38 @@ export class PrecioProductoComponent implements OnInit {
         });
     }
 
-    addToCart() {
-        this.calcTotalPrice();
-        this.carritoService.add(this.producto);
-        this.router.navigate(['/carrito']);
+    async addToCart() {
+        const isLoggedIn = await this.authService.getCurrentUser();
+
+        if (isLoggedIn) {
+            this.calcTotalPrice();
+            this.carritoService.add(this.producto);
+            this.router.navigate(['/carrito']);
+        } else {
+            this.showLoginAlert();
+        }
+    }
+    
+    showLoginAlert() {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-primary me-3',
+                denyButton: 'btn btn-outline-primary'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            icon: 'error',
+            title: '¡Inicia sesión para agregar al carrito!',
+            confirmButtonText: 'Iniciar Sesión',
+            showDenyButton: true,
+            denyButtonText: 'Volver'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.router.navigate(['/ingresar']);
+            }
+        });
     }
 
     private calcTotalPrice() {

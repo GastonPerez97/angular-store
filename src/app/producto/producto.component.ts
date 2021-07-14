@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CarritoService } from '../services/carrito.service';
 import { Product } from "../interfaces/Product";
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-producto',
@@ -13,7 +14,7 @@ export class ProductoComponent implements OnInit {
     @Input()
     producto: Product;
 
-    constructor(private carritoService: CarritoService, private router: Router) {
+    constructor(private carritoService: CarritoService, private router: Router, private authService: AuthService) {
         this.producto = {
             id: 0,
             name: "",
@@ -31,19 +32,19 @@ export class ProductoComponent implements OnInit {
         this.producto.totalPrice = this.producto.price * this.producto.quantity;
     }
 
-    addToCart() {
-        this.carritoService.add(this.producto);
-        this.showConfirmedAlert();
+    async addToCart() {
+        const isLoggedIn = await this.authService.getCurrentUser();
+
+        if (isLoggedIn) {
+            this.carritoService.add(this.producto);
+            this.showConfirmedAlert();
+        } else {
+            this.showLoginAlert();
+        }
     }
 
     showConfirmedAlert() {
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-primary me-3',
-                denyButton: 'btn btn-outline-primary'
-            },
-            buttonsStyling: false
-        });
+        const swalWithBootstrapButtons = this.prepareAlertButtons();
 
         swalWithBootstrapButtons.fire({
             icon: 'success',
@@ -56,6 +57,32 @@ export class ProductoComponent implements OnInit {
             if (result.isDenied) {
                 this.router.navigate(['/carrito']);
             }
+        });
+    }
+
+    showLoginAlert() {
+        const swalWithBootstrapButtons = this.prepareAlertButtons();
+
+        swalWithBootstrapButtons.fire({
+            icon: 'error',
+            title: '¡Inicia sesión para agregar al carrito!',
+            confirmButtonText: 'Iniciar Sesión',
+            showDenyButton: true,
+            denyButtonText: 'Volver'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.router.navigate(['/ingresar']);
+            }
+        });
+    }
+
+    prepareAlertButtons() {
+        return Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-primary me-3',
+                denyButton: 'btn btn-outline-primary'
+            },
+            buttonsStyling: false
         });
     }
 }
