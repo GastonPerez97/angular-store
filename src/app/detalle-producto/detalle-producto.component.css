@@ -12,6 +12,10 @@
     font-weight: bold;
 }
 
+.product-img {
+    max-height: 500px;
+}
+
 @media screen and (max-width: 991px) {
     .principal {
         display: flex;
