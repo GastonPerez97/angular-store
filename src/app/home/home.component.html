@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col mb-4">
                 <div class="card h-100 pb-0 p-4">
                     <div class="img-container">
@@ -58,7 +58,8 @@
         <p class="fw-bold fs-3 mb-3">Encontrá tu producto por categorías:</p>
 
         <div class="card-group text-center row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-            <app-home-category></app-home-category>
+            <app-home-category [producto]='producto'
+            *ngFor="let producto of productos"></app-home-category>
         </div>
     </div>
 </section>
