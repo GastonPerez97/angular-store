@@ -18,6 +18,15 @@
     margin-right: 10px;
 }
 
+.items-header{
+  font-size: large;
+}
+
+.items-header:hover{
+  background-color: gray;
+  color: white !important;
+}
+
 @media screen and (max-width: 992px) {
     .auth-btn {
         padding: 8px;
