@@ -57,9 +57,9 @@
     <div class="m-3 m-sm-0">
         <p class="fw-bold fs-3 mb-3">Encontrá tu producto por categorías:</p>
 
-        <div class="card-group text-center row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        <div class="card-group text-center">
             <app-home-category [producto]='producto'
-            *ngFor="let producto of productos"></app-home-category>
+            *ngFor="let producto of productos"> </app-home-category>
         </div>
     </div>
 </section>
