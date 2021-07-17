@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RestService } from '../services/rest.service';
 
 @Component({
   selector: 'app-new-product-form',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new.product.component.css']
 })
 export class NewProductFormComponent implements OnInit {
+  @Input()
+  categorias: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private RestService: RestService) {
+    this.categorias = [];
   }
 
+  ngOnInit(): void {
+    this.getAllCategories();
+  }
+
+  public getAllCategories() {
+      this.RestService.get('/taller-web-2/api/categories')
+      .subscribe(categorias => {
+          this.categorias = categorias;
+      });
+  }
 }
