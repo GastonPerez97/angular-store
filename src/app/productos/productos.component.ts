@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../interfaces/Product';
+import { ProductsService } from '../services/product.service';
 import { RestService } from '../services/rest.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ProductosComponent implements OnInit {
     productos: Product[];
     categoria: any;
 
-    constructor(private RestService: RestService, private _route: ActivatedRoute) {
+    constructor(private productServices: ProductsService, private _route: ActivatedRoute) {
         this.productos = [];
     }
 
@@ -24,14 +25,14 @@ export class ProductosComponent implements OnInit {
     }
 
     public getAllProducts() {
-        this.RestService.get('/taller-web-2/api/products')
+        this.productServices.getAllProducts()
         .subscribe(productos => {
             this.productos = productos;
         });
     }
 
     public getProductsByCategory(category: any) {
-        this.RestService.get(`/taller-web-2/api/products/${category}`)
+        this.productServices.getProductsByCategory(category)
         .subscribe(productos => {
             this.productos = productos;
         });
