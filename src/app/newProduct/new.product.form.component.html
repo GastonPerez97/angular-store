@@ -67,7 +67,7 @@
     <div class="form-group mb-3">
         <div>
             <label for="description" class="mb-1">Descripción:</label>
-            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+            <textarea class="form-control" id="description" rows="3" formControlName="description" rows="12"></textarea>
         </div>
 
         <div *ngIf="newProductFormGet('description')?.errors && newProductFormGet('description')?.touched" class="mb-3 text-danger">
