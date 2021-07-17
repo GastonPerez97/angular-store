@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { first } from 'rxjs/operators';
 
 @Injectable()
@@ -13,16 +14,30 @@ export class AuthService {
         'auth/too-many-requests': 'Se han realizado muchas solicitudes en poco tiempo. Intentalo más tarde.'
     };
 
-    constructor(public afAuth: AngularFireAuth) { }
+    constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) { }
 
     async loginUser(email: string, password: string) {
         return await this.afAuth.signInWithEmailAndPassword(email, password);
     }
 
-    async registerUser(email: string, password: string) {
+    async registerUser(email: string, password: string, name: string, surname: string, address: string) {
         try {
-            const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+            const user = await this.afAuth.createUserWithEmailAndPassword(email, password);
+            var userId: any;
+            userId = user.user?.uid;
+            this.saveUserData(userId, name, surname, address);
             this.sendVerificationEmail();
+            return user;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    async saveUserData(userId:string, name: string, surname: string, address: string) {
+        try {
+            const result = await this.db.database.ref('users/' + userId)
+                                 .set({name: name, surname: surname, address: address});
+
             return result;
         } catch (error) {
             return error;

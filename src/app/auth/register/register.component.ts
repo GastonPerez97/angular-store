@@ -31,10 +31,10 @@ export class RegisterComponent implements OnInit {
     }
 
     async registerUser() {
-        const { email, password } = this.registerForm.value;
+        const { email, password, name, surname, address } = this.registerForm.value;
 
         try {
-            const user = await this.authService.registerUser(email, password);
+            const user = await this.authService.registerUser(email, password, name, surname, address);
             
             if (user.message && user.code) {
                 throw user;
