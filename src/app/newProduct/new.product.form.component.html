@@ -1,31 +1,46 @@
-<form action="#" method="POST" enctype="multipart/form-data">
+<form enctype="multipart/form-data" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="message !== ''" class="alert alert-success" role="alert">
+        ¡Producto creado exitosamente!
+    </div>
+    <div *ngIf="error !== ''" class="alert alert-danger" role="alert">
+        Revise los campos y vuelva a intentarlo
+    </div>
+
+    <div class="form-group col-md-6 mb-3">
+        <label for="id">ID:</label>
+        <input type="number" id="id" class="form-control" formControlName="id" />
+    </div>
+
     <div class="form-group mb-3">
         <label for="name">Nombre:</label>
-        <input type="text" id="name" class="form-control" placeholder="Ingrese el nombre del producto" />
+        <input type="text" id="name" class="form-control" formControlName="name" />
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6 mb-3">
             <label for="price">Precio:</label>
-            <input type="number" id="price" class="form-control" placeholder="Ingrese el precio del producto" />
+            <input type="number" id="price" class="form-control" formControlName="price" />
         </div>
         <div class="form-group col-md-6 mb-3">
-            <label for="type">Categoria:</label>
-            <select id="type" class="form-control">
-                <option selected>Seleccionar</option>
-                <option [value]="categoria" *ngFor="let categoria of categorias">{{categoria}}</option>
+            <label for="category">Categoria:</label>
+            <select id="category" class="form-control" formControlName="category">
+                <option value="Seleccionar">Seleccionar</option>
+                <option *ngFor="let category of categories" [value]="category">
+                    {{category}}
+                  </option>
             </select>
         </div>
     </div>
 
     <div class="form-group mb-3">
-        <label for="descripcion">Descripcion:</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingrese la descripcion del producto"></textarea>
+        <label for="description">Descripcion:</label>
+        <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
     </div>
 
     <div class="form-group mb-3">
         <label for="urlImage">URL de imagen:</label>
-        <input type="text" id="urlImage" class="form-control" placeholder="Ingrese la url del producto" />
+        <input type="text" id="urlImage" class="form-control" formControlName="urlImage" />
     </div>
 
     <div class="form-group mt-5 text-center">
