@@ -79,7 +79,7 @@ export class ProductoComponent implements OnInit {
     prepareAlertButtons() {
         return Swal.mixin({
             customClass: {
-                confirmButton: 'btn btn-primary me-3',
+                confirmButton: 'btn btn-danger me-3',
                 denyButton: 'btn btn-outline-primary'
             },
             buttonsStyling: false

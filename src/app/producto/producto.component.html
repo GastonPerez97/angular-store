@@ -7,7 +7,7 @@
             <p class="card-text">{{ producto?.price | currency }}</p>
             <div class="product-btn-container">
                 <a routerLink="/detalle/{{ producto?.id }}" class="btn btn-outline-primary product-btn">Ver Detalles</a>
-                <a class="btn btn-primary product-btn" (click)="addToCart()"><i class="fa fa-shopping-cart me-2"></i>Agregar</a>
+                <a class="btn btn-success product-btn" (click)="addToCart()"><i class="fa fa-shopping-cart me-2"></i>Agregar</a>
             </div>
         </div>
     </div>

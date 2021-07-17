@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from "../../interfaces/Product";
 
 @Component({
   selector: 'app-home-category',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-category.component.css']
 })
 export class HomeCategoryComponent implements OnInit {
+  @Input()
+  categoria: string[];
 
-  constructor() { }
+
+  constructor() {
+    this.categoria = []
+   }
 
   ngOnInit(): void {
   }

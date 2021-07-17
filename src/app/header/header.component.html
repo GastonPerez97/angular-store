@@ -1,4 +1,4 @@
-<nav class="container-fluid navbar navbar-expand-lg navbar-light py-4">
+<nav class="container-fluid navbar navbar-expand-lg navbar-light py-3">
     <header class="container px-0">
         <a class="navbar-brand brand" routerLink="/">AngularStore</a>
 
@@ -9,13 +9,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto text-center navbar-btn">
                 <li>
-                    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link px-2 link-dark"> Inicio</a>
+                    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link px-4 link-dark items-header"> Inicio</a>
                 </li>
                 <li>
-                    <a routerLink="/productos" routerLinkActive="active" class="nav-link px-2 link-dark">Productos</a>
+                    <a routerLink="/productos" routerLinkActive="active" class="nav-link px-4 link-dark items-header">Productos</a>
                 </li>
                 <li *ngIf="(user$ | async)?.email == 'tallerweb2proyecto@gmail.com'">
-                    <a routerLink="/nuevo-producto" routerLinkActive="active" class="nav-link px-2 link-dark">Nuevo Producto</a>
+                    <a routerLink="/nuevo-producto" routerLinkActive="active" class="nav-link px-4 link-dark items-header">Nuevo Producto</a>
                 </li>
             </ul>
 
@@ -23,10 +23,10 @@
                 <div class="text-center auth-btn">
                     <div class="d-flex align-items-center justify-content-center mb-3 mb-sm-0">
                         <p class="m-0">{{ user.email }}</p>
-                        <a routerLink="/carrito" class="text-decoration-none btn btn-outline-primary ms-3 mx-0 mx-sm-3"><i class="fa fa-shopping-cart"></i><span class="ms-2" *ngIf="countProducts >= 1">{{ countProducts }}</span></a>
+                        <a routerLink="/carrito" class="text-decoration-none btn btn-primary ms-3 mx-0 mx-sm-3"><i class="fa fa-shopping-cart"></i><span class="ms-2" *ngIf="countProducts >= 1">{{ countProducts }}</span></a>
                     </div>
 
-                    <button routerLink="/ingresar" type="button" class="btn btn-outline-primary" (click)="logoutUser()">
+                    <button routerLink="/ingresar" type="button" class="btn btn-outline-danger" (click)="logoutUser()">
                         Cerrar Sesión
                     </button>
                 </div>
@@ -35,7 +35,7 @@
             <ng-template #login>
                 <div class="text-center auth-btn">
                     <button routerLink="/ingresar" type="button" class="btn btn-outline-primary login-btn">Iniciar Sesión</button>
-                    <button routerLink="/registrarse" type="button" class="btn btn-primary register-btn">Registrarse</button>
+                    <button routerLink="/registrarse" type="button" class="btn btn-success register-btn">Registrarse</button>
                 </div>
             </ng-template>
         </div>
