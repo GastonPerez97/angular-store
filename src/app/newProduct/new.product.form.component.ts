@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-product-form',
@@ -15,12 +15,12 @@ export class NewProductFormComponent implements OnInit {
 
     constructor(private restService: RestService, private formBuilder: FormBuilder) {
         this.checkoutForm = this.formBuilder.group({
-            id: [0],
-            name: [''],
-            price: [0],
-            category: [''],
-            description: [''],
-            urlImage: [''],
+            id: [0, [Validators.required, Validators.pattern('[1-9][0-9]*')]],
+            name: ['', Validators.required],
+            price: [0, [Validators.required, Validators.pattern('[1-9][0-9]*')]],
+            category: ['Seleccionar', [Validators.required, Validators.pattern('^(?!.*Seleccionar).*$')]],
+            description: ['', Validators.required],
+            urlImage: ['', [Validators.required, Validators.pattern('(http(s?):\/\/.*\.(?:png|jpg))')]],
         });
 
         this.message = '';
@@ -45,5 +45,9 @@ export class NewProductFormComponent implements OnInit {
             (response) => this.message = response,
             (error) => this.error = error,
         )
+    }
+
+    public newProductFormGet(name: string) {
+        return this.checkoutForm.get(name);
     }
 }
