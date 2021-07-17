@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from '../services/rest.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CategoriesService } from '../services/categories.service';
+import { ProductsService } from '../services/product.service';
 
 @Component({
   selector: 'app-new-product-form',
@@ -13,7 +14,7 @@ export class NewProductFormComponent implements OnInit {
   message: string;
   error: string;
 
-  constructor(private restService: RestService, private formBuilder: FormBuilder) {
+  constructor(private productService: ProductsService, private formBuilder: FormBuilder, private categoriesService: CategoriesService) {
     this.checkoutForm = this.formBuilder.group({
       id: [0],
       name: [''],
@@ -31,7 +32,7 @@ export class NewProductFormComponent implements OnInit {
   }
 
   public getAllCategories() {
-    this.restService.get('/taller-web-2/api/categories')
+    this.categoriesService.getAllCategories()
     .subscribe(categories => {
         this.categories = categories;
     });
@@ -40,7 +41,7 @@ export class NewProductFormComponent implements OnInit {
   public onSubmit() {
     this.message = '';
     this.error = '';
-    this.restService.post('/taller-web-2/api/product', this.checkoutForm.value).subscribe(
+    this.productService.newProduct(this.checkoutForm.value).subscribe(
       (response) => this.message = response,
       (error) => this.error = error,
     )

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RestService } from '../services/rest.service';
+import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
     @Input()
     categorias: any;
 
-    constructor(private RestService: RestService) {
+    constructor(private categoriesService: CategoriesService) {
         this.categorias = [];
     }
 
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     }
 
     public getAllCategories() {
-        this.RestService.get('/taller-web-2/api/categories')
+        this.categoriesService.getAllCategories()
         .subscribe(categorias => {
             this.categorias = categorias;
         });
