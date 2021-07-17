@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from '../interfaces/Product';
+import { Component, Input, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,32 +7,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  productos: Product[];
-  categoria: any;
+  @Input()
+  categorias: any;
 
-  constructor(private RestService: RestService, private _route: ActivatedRoute) {
-    this.productos = [];
+
+  constructor(private RestService: RestService) {
+    this.categorias = [];
 }
 
 ngOnInit(): void {
-    this._route.paramMap.subscribe(params => {
-        this.categoria = params.get('category');
-        this.categoria != null ? this.getProductsByCategory(this.categoria) : this.getAllProducts();
+  this.getAllCategories();
+}
+
+public getAllCategories() {
+    this.RestService.get('/taller-web-2/api/categories')
+    .subscribe(categorias => {
+        this.categorias = categorias;
     });
 }
 
-public getAllProducts() {
-    this.RestService.get('/taller-web-2/api/products')
-    .subscribe(productos => {
-        this.productos = productos;
-    });
-}
-
-public getProductsByCategory(category: any) {
-    this.RestService.get(`/taller-web-2/api/products/${category}`)
-    .subscribe(productos => {
-        this.productos = productos;
-    });
-}
 
 }

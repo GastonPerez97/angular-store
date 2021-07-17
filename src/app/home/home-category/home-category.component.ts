@@ -8,20 +8,11 @@ import { Product } from "../../interfaces/Product";
 })
 export class HomeCategoryComponent implements OnInit {
   @Input()
-  producto: Product;
+  categoria: string[];
 
 
   constructor() {
-    this.producto = {
-      id: 0,
-      name: "",
-      category: "",
-      price: 0,
-      description: "",
-      urlImage: "",
-      quantity: 0,
-      totalPrice: 0
-  }
+    this.categoria = []
    }
 
   ngOnInit(): void {
