@@ -34,8 +34,7 @@ export class CarritoComponent implements OnInit {
             this.carritoService.getProducts$().subscribe(products => {
                 this.products = products;
             });
-        } else {
+        } else
             this.router.navigate(['/ingresar']);
-        }
     }
 }

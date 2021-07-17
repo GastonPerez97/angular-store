@@ -16,6 +16,10 @@ export class ProductsService {
         return this.restService.get(`/taller-web-2/api/products/${category}`);
     }
 
+    public getProductById(id: any) {
+        return this.restService.get(`/taller-web-2/api/product/${id}`);
+    }
+
     public newProduct(product: any) {
         return this.restService.post('/taller-web-2/api/product', product);
     }

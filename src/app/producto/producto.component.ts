@@ -38,9 +38,8 @@ export class ProductoComponent implements OnInit {
         if (isLoggedIn) {
             this.carritoService.add(this.producto);
             this.showConfirmedAlert();
-        } else {
+        } else
             this.showLoginAlert();
-        }
     }
 
     showConfirmedAlert() {
@@ -54,9 +53,8 @@ export class ProductoComponent implements OnInit {
             showDenyButton: true,
             denyButtonText: 'Ir al carrito'
         }).then((result) => {
-            if (result.isDenied) {
+            if (result.isDenied)
                 this.router.navigate(['/carrito']);
-            }
         });
     }
 
@@ -70,9 +68,8 @@ export class ProductoComponent implements OnInit {
             showDenyButton: true,
             denyButtonText: 'Volver'
         }).then((result) => {
-            if (result.isConfirmed) {
+            if (result.isConfirmed)
                 this.router.navigate(['/ingresar']);
-            }
         });
     }
 

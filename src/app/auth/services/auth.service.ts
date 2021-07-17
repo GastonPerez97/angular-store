@@ -75,8 +75,7 @@ export class AuthService {
     async logoutIfEmailNotVerified() {
         const user = await this.getCurrentUser();
         
-        if (!user?.emailVerified) {
+        if (!user?.emailVerified)
             this.logoutUser();
-        }
     }
 }

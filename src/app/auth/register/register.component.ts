@@ -57,15 +57,13 @@ export class RegisterComponent implements OnInit {
             const passwordControl = formGroup.controls['password'];
             const confirmPasswordControl = formGroup.controls['confirmPassword'];
     
-            if (confirmPasswordControl.errors && !confirmPasswordControl.errors.passwordMismatch) {
+            if (confirmPasswordControl.errors && !confirmPasswordControl.errors.passwordMismatch)
                 return;
-            }
 
-            if (passwordControl.value !== confirmPasswordControl.value) {
+            if (passwordControl.value !== confirmPasswordControl.value)
                 confirmPasswordControl.setErrors({ passwordMismatch: true });
-            } else {
+            else
                 confirmPasswordControl.setErrors(null);
-            }
         }
     }
 }

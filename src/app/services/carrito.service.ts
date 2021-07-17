@@ -43,7 +43,7 @@ export class CarritoService {
 
     getTotal() {
         const items: any = this.getAll();
-        var total = 0;
+        let total = 0;
 
         items.forEach((item: { totalPrice: any; }) => {
             total += item.totalPrice;
@@ -54,10 +54,10 @@ export class CarritoService {
 
     getCountProducts() {
         const items: any = this.getAll();
-        var count = 0;
+        let count = 0;
 
         items.forEach((item: Product) => {
-            count += 1;
+            count++;
         });
 
         return count;

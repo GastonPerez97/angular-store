@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestService } from '../services/rest.service';
 import { CarritoService } from '../services/carrito.service';
 import { Product } from "../interfaces/Product";
 import { AuthService } from '../auth/services/auth.service';
 import Swal from 'sweetalert2';
+import { ProductsService } from '../services/product.service';
 
 @Component({
   selector: 'app-precio-producto',
@@ -15,7 +15,7 @@ export class PrecioProductoComponent implements OnInit {
     public producto: Product;
     public id: any;
 
-    constructor(private _route: ActivatedRoute, private RestService: RestService,
+    constructor(private _route: ActivatedRoute, private productService: ProductsService,
                 private carritoService: CarritoService, private router: Router,
                 private authService: AuthService) {
         this.producto = {
@@ -37,7 +37,7 @@ export class PrecioProductoComponent implements OnInit {
     }
 
     public getProduct() {
-        this.RestService.get(`/taller-web-2/api/product/${this.id}`)
+        this.productService.getProductById(this.id)
         .subscribe(producto => {
             this.producto = producto;
             this.producto.quantity = 1;
@@ -51,9 +51,8 @@ export class PrecioProductoComponent implements OnInit {
             this.calcTotalPrice();
             this.carritoService.add(this.producto);
             this.router.navigate(['/carrito']);
-        } else {
+        } else
             this.showLoginAlert();
-        }
     }
     
     showLoginAlert() {
@@ -72,9 +71,8 @@ export class PrecioProductoComponent implements OnInit {
             showDenyButton: true,
             denyButtonText: 'Volver'
         }).then((result) => {
-            if (result.isConfirmed) {
+            if (result.isConfirmed)
                 this.router.navigate(['/ingresar']);
-            }
         });
     }
 
