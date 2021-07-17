@@ -19,12 +19,11 @@
 }
 
 .items-header{
-  font-size: large;
+    font-size: large;
 }
 
 .items-header:hover{
-  background-color: gray;
-  color: white !important;
+    background-color: gray;
 }
 
 @media screen and (max-width: 992px) {
