@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { CategoriesService } from '../services/categories.service';
 import { ProductsService } from '../services/product.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-product-form',
@@ -9,41 +9,46 @@ import { ProductsService } from '../services/product.service';
   styleUrls: ['./new.product.component.css']
 })
 export class NewProductFormComponent implements OnInit {
-  categories: string[] = []; 
-  checkoutForm: FormGroup;
-  message: string;
-  error: string;
+    categories: string[] = [];
+    checkoutForm: FormGroup;
+    message: string;
+    error: string;
 
-  constructor(private productService: ProductsService, private formBuilder: FormBuilder, private categoriesService: CategoriesService) {
-    this.checkoutForm = this.formBuilder.group({
-      id: [0],
-      name: [''],
-      price: [0],
-      category: [''],
-      description: [''],
-      urlImage: [''],
-    });
-    this.message = '';
-    this.error = '';
-  }
+    constructor(private productService: ProductsService, private formBuilder: FormBuilder, private categoriesService: CategoriesService) {
+        this.checkoutForm = this.formBuilder.group({
+            id: [0, [Validators.required, Validators.pattern('[1-9][0-9]*')]],
+            name: ['', Validators.required],
+            price: [0, [Validators.required, Validators.pattern('[1-9][0-9]*')]],
+            category: ['Seleccionar', [Validators.required, Validators.pattern('^(?!.*Seleccionar).*$')]],
+            description: ['', Validators.required],
+            urlImage: ['', [Validators.required, Validators.pattern('(http(s?):\/\/.*\.(?:png|jpg))')]],
+        });
 
-  ngOnInit(): void {
-    this.getAllCategories();
-  }
+        this.message = '';
+        this.error = '';
+    }
 
-  public getAllCategories() {
-    this.categoriesService.getAllCategories()
-    .subscribe(categories => {
-        this.categories = categories;
-    });
-  }
-  
-  public onSubmit() {
-    this.message = '';
-    this.error = '';
-    this.productService.newProduct(this.checkoutForm.value).subscribe(
-      (response) => this.message = response,
-      (error) => this.error = error,
-    )
-  }
+    ngOnInit(): void {
+        this.getAllCategories();
+    }
+
+    public getAllCategories() {
+        this.categoriesService.getAllCategories()
+        .subscribe(categories => {
+            this.categories = categories;
+        });
+    }
+    
+    public onSubmit() {
+        this.message = '';
+        this.error = '';
+        this.productService.newProduct(this.checkoutForm.value).subscribe(
+            (response) => this.message = response,
+            (error) => this.error = error,
+        )
+    }
+
+    public newProductFormGet(name: string) {
+        return this.checkoutForm.get(name);
+    }
 }

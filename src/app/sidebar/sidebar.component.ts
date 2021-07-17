@@ -7,21 +7,21 @@ import { RestService } from '../services/rest.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  @Input()
-  categorias: any;
+    @Input()
+    categorias: any;
 
-  constructor(private RestService: RestService) {
-    this.categorias = [];
-   }
+    constructor(private RestService: RestService) {
+        this.categorias = [];
+    }
 
-   ngOnInit(): void {
-    this.getAllCategories();
-  }
+    ngOnInit(): void {
+        this.getAllCategories();
+    }
 
-  public getAllCategories() {
-      this.RestService.get('/taller-web-2/api/categories')
-      .subscribe(categorias => {
-          this.categorias = categorias;
-      });
-  }
+    public getAllCategories() {
+        this.RestService.get('/taller-web-2/api/categories')
+        .subscribe(categorias => {
+            this.categorias = categorias;
+        });
+    }
 }

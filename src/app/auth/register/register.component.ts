@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
     registerForm: FormGroup;
 
     constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { 
@@ -21,9 +21,6 @@ export class RegisterComponent implements OnInit {
             password: new FormControl('', [Validators.required, Validators.minLength(6)]),
             confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
         }, { validator: this.checkPasswords() });
-    }
-
-    ngOnInit(): void {
     }
 
     registerFormGet(name: string) {

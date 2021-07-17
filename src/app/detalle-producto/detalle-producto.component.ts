@@ -26,7 +26,6 @@ export class DetalleProductoComponent implements OnInit {
             totalPrice: 0
         }
 
-        // if (this._route.snapshot.paramMap.get('id') != number)
         this.id = this._route.snapshot.paramMap.get('id');
     }
 

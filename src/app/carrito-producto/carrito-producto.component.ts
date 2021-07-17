@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CarritoService } from '../services/carrito.service';
 import { Product } from "../interfaces/Product";
 
@@ -7,7 +7,7 @@ import { Product } from "../interfaces/Product";
   templateUrl: './carrito-producto.component.html',
   styleUrls: ['./carrito-producto.component.css']
 })
-export class CarritoProductoComponent implements OnInit {
+export class CarritoProductoComponent {
     @Input()
     product: Product;
 
@@ -22,9 +22,6 @@ export class CarritoProductoComponent implements OnInit {
             quantity: 1,
             totalPrice: 0
         }
-    }
-
-    ngOnInit(): void {
     }
 
     removeFromCart() {

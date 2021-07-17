@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     loginForm: FormGroup;
 
     constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
@@ -17,9 +17,6 @@ export class LoginComponent implements OnInit {
             email: new FormControl('', [Validators.required, Validators.pattern('^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$')]),
             password: new FormControl('', [Validators.required, Validators.minLength(6)])
         });
-     }
-
-    ngOnInit(): void {
     }
 
     loginFormGet(name: string) {

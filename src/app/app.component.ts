@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from './auth/services/auth.service';
 
 @Component({
@@ -9,7 +8,6 @@ import { AuthService } from './auth/services/auth.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title: string = 'test-app';
     router: Router;
 
     constructor(private authService: AuthService, private _router: Router) {

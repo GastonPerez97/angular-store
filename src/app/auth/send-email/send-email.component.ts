@@ -40,6 +40,5 @@ export class SendEmailComponent implements OnDestroy {
                 confirmButtonText: 'Cerrar'
             })
         }
-
     }
 }

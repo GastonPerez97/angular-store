@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -9,16 +9,13 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordComponent {
     forgotPasswordForm: FormGroup;
 
     constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
         this.forgotPasswordForm = this.formBuilder.group({
             email: new FormControl('', [Validators.required, Validators.pattern('^[0-9a-zA-Z._.-]+\@[0-9a-zA-Z._.-]+\.[0-9a-zA-Z]+$')]),
         });
-    }
-
-    ngOnInit(): void {
     }
 
     async resetPassword() {
@@ -46,5 +43,4 @@ export class ForgotPasswordComponent implements OnInit {
             })
         }
     }
-
 }

@@ -5,15 +5,11 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './sidebar-category.component.html',
   styleUrls: ['./sidebar-category.component.css']
 })
-export class SidebarCategoryComponent implements OnInit {
-  @Input()
-  categoria: string[];
+export class SidebarCategoryComponent {
+    @Input()
+    categoria: string[];
 
-  constructor() {
-    this.categoria = []
-   }
-
-  ngOnInit(): void {
-  }
-
+    constructor() {
+        this.categoria = []
+    }
 }
