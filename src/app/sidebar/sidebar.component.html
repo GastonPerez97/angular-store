@@ -14,8 +14,8 @@
                     <a routerLink="/productos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link link-dark">Mostrar todo</a>
                 </li>
 
-                <app-sidebar-category></app-sidebar-category>
-                
+                <app-sidebar-category [categoria]='categoria'
+                *ngFor="let categoria of categorias"></app-sidebar-category>
                 <li class="border-top my-3"></li>
             </ul>
         </div>
