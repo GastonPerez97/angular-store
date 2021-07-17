@@ -12,11 +12,8 @@
         <div class="form-group col-md-6 mb-3">
             <label for="type">Categoria:</label>
             <select id="type" class="form-control">
-                <option selected>----</option>
-                <option>Monitores</option>
-                <option>Perifericos</option>
-                <option>Gabinetes</option>
-                <option>Otros</option>
+                <option selected>Seleccionar</option>
+                <option [value]="categoria" *ngFor="let categoria of categorias">{{categoria}}</option>
             </select>
         </div>
     </div>

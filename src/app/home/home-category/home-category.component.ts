@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from "../../interfaces/Product";
 
 @Component({
   selector: 'app-home-category',
