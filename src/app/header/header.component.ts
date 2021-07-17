@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 import { CarritoService } from '../services/carrito.service';
-import { Product } from "../interfaces/Product";
 
 @Component({
   selector: 'app-header',

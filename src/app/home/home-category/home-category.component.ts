@@ -1,20 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home-category',
   templateUrl: './home-category.component.html',
   styleUrls: ['./home-category.component.css']
 })
-export class HomeCategoryComponent implements OnInit {
-  @Input()
-  categoria: string[];
+export class HomeCategoryComponent {
+    @Input()
+    categoria: string[];
 
-
-  constructor() {
-    this.categoria = []
-   }
-
-  ngOnInit(): void {
-  }
-
+    constructor() {
+        this.categoria = []
+    }
 }
