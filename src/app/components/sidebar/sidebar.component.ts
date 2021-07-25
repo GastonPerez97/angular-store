@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Category } from 'src/app/interfaces/category';
 import { CategoriesService } from '../../services/categories.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class SidebarComponent implements OnInit {
     @Input()
-    categorias: any;
+    categorias: Category[];
 
     constructor(private categoriesService: CategoriesService) {
         this.categorias = [];

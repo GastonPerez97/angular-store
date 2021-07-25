@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Category } from 'src/app/interfaces/category';
 
 @Component({
   selector: 'app-home-category',
@@ -7,9 +8,11 @@ import { Component, Input } from '@angular/core';
 })
 export class HomeCategoryComponent {
     @Input()
-    categoria: string[];
+    categoria: Category;
 
     constructor() {
-        this.categoria = []
+        this.categoria = {
+			name: ""
+		}
     }
 }
