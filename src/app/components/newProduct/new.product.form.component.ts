@@ -3,6 +3,7 @@ import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/interfaces/category';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-new-product-form',
@@ -14,8 +15,9 @@ export class NewProductFormComponent implements OnInit {
     checkoutForm: FormGroup;
     message: string;
     error: string;
+	userEmail: string = "";
 
-    constructor(private productService: ProductsService, private formBuilder: FormBuilder, private categoriesService: CategoriesService) {
+    constructor(private productService: ProductsService, private formBuilder: FormBuilder, private categoriesService: CategoriesService, private authService: AuthService) {
         this.checkoutForm = this.formBuilder.group({
             name: ['', Validators.required],
             price: [0, [Validators.required, Validators.min(0), Validators.pattern('[1-9][0-9]*')]],
@@ -39,9 +41,12 @@ export class NewProductFormComponent implements OnInit {
         });
     }
     
-    public onSubmit() {
+    public async onSubmit() {
         this.message = '';
         this.error = '';
+
+		const user = await this.authService.getCurrentUser();
+		this.checkoutForm.value.userEmail = user!.email;
 
         this.productService.newProduct(this.checkoutForm.value).subscribe(
             (response) => this.message = response,
