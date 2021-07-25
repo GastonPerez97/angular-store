@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestService } from '../services/rest.service';
-import { CarritoService } from '../services/carrito.service';
-import { Product } from "../interfaces/Product";
+import { RestService } from '../../services/rest.service';
+import { CarritoService } from '../../services/carrito.service';
+import { Product } from "../../interfaces/Product";
 
 @Component({
   selector: 'app-detalle-producto',

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { ProductosComponent } from './productos/productos.component';
-import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
-import { SendEmailComponent } from './auth/send-email/send-email.component';
-import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { NewProductComponent } from './newProduct/new.product.component';
-import { CarritoComponent } from './carrito/carrito.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
+import { SendEmailComponent } from './components/auth/send-email/send-email.component';
+import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
+import { NewProductComponent } from './components/newProduct/new.product.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 const routes: Routes = [
     { path: "", component: HomeComponent },

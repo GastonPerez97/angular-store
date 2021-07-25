@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../services/categories.service';
-import { ProductsService } from '../services/product.service';
+import { CategoriesService } from '../../services/categories.service';
+import { ProductsService } from '../../services/product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

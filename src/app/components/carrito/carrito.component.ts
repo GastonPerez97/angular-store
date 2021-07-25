@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CarritoService } from '../services/carrito.service';
-import { Product } from "../interfaces/Product";
-import { AuthService } from '../auth/services/auth.service';
+import { CarritoService } from '../../services/carrito.service';
+import { Product } from "../../interfaces/Product";
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/services/auth.service';
-import { CarritoService } from '../services/carrito.service';
+import { AuthService } from '../../services/auth.service';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-header',
