@@ -14,7 +14,7 @@
                 <li>
                     <a routerLink="/productos" routerLinkActive="active" class="nav-link px-4 link-dark items-header">Productos</a>
                 </li>
-                <li *ngIf="(user$ | async)?.email == 'tallerweb2proyecto@gmail.com'">
+                <li *ngIf="(user$ | async)?.email == admin">
                     <a routerLink="/nuevo-producto" routerLinkActive="active" class="nav-link px-4 link-dark items-header">Nuevo Producto</a>
                 </li>
             </ul>

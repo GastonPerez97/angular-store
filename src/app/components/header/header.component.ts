@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../../services/auth.service';
 import { CarritoService } from '../../services/carrito.service';
 
@@ -12,6 +13,7 @@ import { CarritoService } from '../../services/carrito.service';
 export class HeaderComponent {
     public user$: Observable<any> = this.authService.afAuth.user;
     public countProducts: number;
+	public admin = environment.admin;
 
     constructor(private authService: AuthService, private router: Router, private carritoService: CarritoService) {
         this.countProducts = 0;
