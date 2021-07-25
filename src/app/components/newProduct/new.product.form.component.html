@@ -7,19 +7,6 @@
         Revise los campos y vuelva a intentarlo
     </div>
 
-    <div class="form-group col-md-6 mb-3">
-        <div>
-            <label for="id" class="mb-1">ID:</label>
-            <input type="number" id="id" class="form-control" formControlName="id" />
-        </div>
-
-        <div *ngIf="newProductFormGet('id')?.errors && newProductFormGet('id')?.touched" class="mb-3 text-danger">
-            <div *ngIf="newProductFormGet('id')?.errors?.required || newProductFormGet('id')?.errors?.pattern">
-                El campo ID es obligatorio.
-            </div>
-        </div>
-    </div>
-
     <div class="form-group mb-3">
         <div>
             <label for="name" class="mb-1">Nombre:</label>
@@ -39,6 +26,9 @@
             </div>
 
             <div *ngIf="newProductFormGet('price')?.errors && newProductFormGet('price')?.touched" class="mb-3 text-danger">
+				<div *ngIf="newProductFormGet('price')?.errors?.min">
+                    Ingresa un número mayor a 0.
+                </div>
                 <div *ngIf="newProductFormGet('price')?.errors?.required || newProductFormGet('price')?.errors?.pattern">
                     El campo Precio es obligatorio.
                 </div>
@@ -50,8 +40,8 @@
                 <label for="category" class="mb-1">Categoría:</label>
                 <select id="category" class="form-select" formControlName="category">
                     <option selected hidden>Seleccionar</option>
-                    <option *ngFor="let category of categories" [value]="category">
-                        {{category}}
+                    <option *ngFor="let category of categories" [value]="category.name">
+                        {{ category.name }}
                       </option>
                 </select>
             </div>
