@@ -1,5 +1,0 @@
-{
-    "/taller-web-2/api/*": {
-      "target": "http://localhost:3001"
-    }
-}
