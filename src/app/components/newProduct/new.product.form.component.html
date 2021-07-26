@@ -1,0 +1,85 @@
+<form enctype="multipart/form-data" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="message !== ''" class="alert alert-success" role="alert">
+        ¡Producto creado exitosamente!
+    </div>
+    <div *ngIf="error !== ''" class="alert alert-danger" role="alert">
+        Revise los campos y vuelva a intentarlo
+    </div>
+
+    <div class="form-group mb-3">
+        <div>
+            <label for="name" class="mb-1">Nombre:</label>
+            <input type="text" id="name" class="form-control" formControlName="name" />
+        </div>
+
+        <div *ngIf="newProductFormGet('name')?.errors && newProductFormGet('name')?.touched" class="mb-3 text-danger">
+            <div *ngIf="newProductFormGet('name')?.errors?.required">El campo Nombre es obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="mb-3">
+            <div class="form-group col-md-6">
+                <label for="price" class="mb-1">Precio:</label>
+                <input type="number" id="price" class="form-control" formControlName="price" />
+            </div>
+
+            <div *ngIf="newProductFormGet('price')?.errors && newProductFormGet('price')?.touched" class="mb-3 text-danger">
+				<div *ngIf="newProductFormGet('price')?.errors?.min">
+                    Ingresa un número mayor a 0.
+                </div>
+                <div *ngIf="newProductFormGet('price')?.errors?.required || newProductFormGet('price')?.errors?.pattern">
+                    El campo Precio es obligatorio.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6 mb-3">
+            <div>
+                <label for="category" class="mb-1">Categoría:</label>
+                <select id="category" class="form-select" formControlName="category">
+                    <option selected hidden>Seleccionar</option>
+                    <option *ngFor="let category of categories" [value]="category.name">
+                        {{ category.name }}
+                      </option>
+                </select>
+            </div>
+
+            <div *ngIf="newProductFormGet('category')?.errors && newProductFormGet('category')?.touched" class="mb-3 text-danger">
+                <div *ngIf="newProductFormGet('category')?.errors?.required || newProductFormGet('category')?.errors?.pattern">
+                    El campo Categoría es obligatorio.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <div>
+            <label for="description" class="mb-1">Descripción:</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description" rows="12"></textarea>
+        </div>
+
+        <div *ngIf="newProductFormGet('description')?.errors && newProductFormGet('description')?.touched" class="mb-3 text-danger">
+            <div *ngIf="newProductFormGet('description')?.errors?.required">El campo Descripción es obligatorio.</div>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <div>
+            <label for="urlImage" class="mb-1">URL de imagen:</label>
+            <input type="url" id="urlImage" class="form-control" formControlName="urlImage" />
+        </div>
+
+        <div *ngIf="newProductFormGet('urlImage')?.errors && newProductFormGet('urlImage')?.touched" class="mb-3 text-danger">
+            <div *ngIf="newProductFormGet('urlImage')?.errors?.required">El campo URL de imagen es obligatorio.</div>
+            <div *ngIf="newProductFormGet('urlImage')?.errors?.pattern">
+                Ingresa una URL válida, las extensiones pueden ser .jpg o .png.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mt-5 text-center">
+        <button type="submit" class="btn btn-success mx-auto" [disabled]="checkoutForm.invalid">Agregar Producto</button>
+    </div>
+</form>

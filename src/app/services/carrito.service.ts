@@ -9,6 +9,7 @@ export class CarritoService {
     private total$: Subject<number>;
     private products$: Subject<Product[]>;
     private countProducts$: Subject<number>;
+	private idRegex = /^[0-9a-fA-F]{24}$/;
 
     constructor() {
         this.total$ = new Subject();
@@ -27,7 +28,7 @@ export class CarritoService {
     }
 
     get(id: string) {
-        return JSON.parse(localStorage.getItem(id)!);
+		return JSON.parse(localStorage.getItem(id)!);
     }
 
     getAll() {
@@ -35,7 +36,9 @@ export class CarritoService {
         const keys = Object.keys(localStorage);
 
         keys.forEach(key => {
-            items.push(JSON.parse(localStorage[key]));
+			if (this.isValidId(key)) {
+				items.push(JSON.parse(localStorage[key]));
+			}
         });
 
         return items;
@@ -106,4 +109,8 @@ export class CarritoService {
         this.products$.next(this.getAll());
         this.countProducts$.next(this.getCountProducts());
     }
+
+	isValidId(id: string) {
+		return this.idRegex.test(id);
+	}
 }

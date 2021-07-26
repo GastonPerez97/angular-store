@@ -11,8 +11,7 @@ export class RestService {
 
     public get(url: string): Observable<any> {
         const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer LKAJSDKLJASD'
+            'Content-Type': 'application/json'
         });
 
         return this.http.get(url, { headers: headers });
@@ -20,8 +19,7 @@ export class RestService {
 
     public post(url: string, data: any): Observable<any> {
         const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer LKAJSDKLJASD'
+            'Content-Type': 'application/json'
         });
 
         return this.http.post<any>(url, data, { headers: headers });
