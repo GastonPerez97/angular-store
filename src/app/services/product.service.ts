@@ -9,14 +9,18 @@ export class ProductsService {
     constructor(private restService: RestService) {}
 
     public getAllProducts() {
-        return this.restService.get('/taller-web-2/api/products');
+        return this.restService.get('https://angular-store-api.herokuapp.com/taller-web-2/api/products');
     }
 
     public getProductsByCategory(category: any) {
-        return this.restService.get(`/taller-web-2/api/products/${category}`);
+        return this.restService.get(`https://angular-store-api.herokuapp.com/taller-web-2/api/products/${category}`);
     }
 
+	public getProductById(id: string) {
+		return this.restService.get(`https://angular-store-api.herokuapp.com/taller-web-2/api/product/${id}`);
+	}
+
     public newProduct(product: any) {
-        return this.restService.post('/taller-web-2/api/product', product);
+        return this.restService.post('https://angular-store-api.herokuapp.com/taller-web-2/api/product', product);
     }
 }

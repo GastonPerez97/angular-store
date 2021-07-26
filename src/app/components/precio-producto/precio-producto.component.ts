@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestService } from '../../services/rest.service';
 import { CarritoService } from '../../services/carrito.service';
 import { Product } from "../../interfaces/Product";
 import { AuthService } from '../../services/auth.service';
+import { ProductsService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,7 +15,7 @@ export class PrecioProductoComponent implements OnInit {
     public producto: Product;
     public id: any;
 
-    constructor(private _route: ActivatedRoute, private RestService: RestService,
+    constructor(private _route: ActivatedRoute, private productService: ProductsService,
                 private carritoService: CarritoService, private router: Router,
                 private authService: AuthService) {
         this.producto = {
@@ -37,7 +37,7 @@ export class PrecioProductoComponent implements OnInit {
     }
 
     public getProduct() {
-        this.RestService.get(`/taller-web-2/api/product/${this.id}`)
+        this.productService.getProductById(this.id)
         .subscribe(producto => {
             this.producto = producto;
             this.producto.quantity = 1;

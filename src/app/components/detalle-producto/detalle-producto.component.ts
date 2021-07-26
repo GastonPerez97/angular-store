@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestService } from '../../services/rest.service';
 import { CarritoService } from '../../services/carrito.service';
 import { Product } from "../../interfaces/Product";
+import { ProductsService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -13,7 +13,7 @@ export class DetalleProductoComponent implements OnInit {
     public producto: Product;
     public id: any;
 
-    constructor(private _route: ActivatedRoute, private RestService: RestService,
+    constructor(private _route: ActivatedRoute, private productService: ProductsService,
                 private carritoService: CarritoService, private router: Router) {
         this.producto = {
             id: 0,
@@ -34,7 +34,7 @@ export class DetalleProductoComponent implements OnInit {
     }
 
     public getProduct() {
-        this.RestService.get(`/taller-web-2/api/product/${this.id}`)
+        this.productService.getProductById(this.id)
         .subscribe(producto => {
             this.producto = producto;
         });
