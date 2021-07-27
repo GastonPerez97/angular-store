@@ -12,6 +12,8 @@ import { ProductsService } from 'src/app/services/product.service';
 export class DetalleProductoComponent implements OnInit {
     public producto: Product;
     public id: any;
+	public hideSpinner = false;
+	public hideImage = true;
 
     constructor(private _route: ActivatedRoute, private productService: ProductsService,
                 private carritoService: CarritoService, private router: Router) {
@@ -37,6 +39,8 @@ export class DetalleProductoComponent implements OnInit {
         this.productService.getProductById(this.id)
         .subscribe(producto => {
             this.producto = producto;
+			this.hideSpinner = true;
+			this.hideImage = false;
         });
     }
 }

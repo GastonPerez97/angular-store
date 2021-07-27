@@ -11,6 +11,7 @@ import { ProductsService } from '../../services/product.service';
 export class ProductosComponent implements OnInit {
     productos: Product[];
     categoria: any;
+	hideSpinner = false;
 
     constructor(private productServices: ProductsService, private _route: ActivatedRoute) {
         this.productos = [];
@@ -27,6 +28,7 @@ export class ProductosComponent implements OnInit {
         this.productServices.getAllProducts()
         .subscribe(productos => {
             this.productos = productos;
+			this.hideSpinner = true;
         });
     }
 
@@ -34,6 +36,7 @@ export class ProductosComponent implements OnInit {
         this.productServices.getProductsByCategory(category)
         .subscribe(productos => {
             this.productos = productos;
+			this.hideSpinner = true;
         });
     }
 }
