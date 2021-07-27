@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CarritoService } from '../../services/carrito.service';
-import { Product } from "../../interfaces/Product";
+import { Product } from "../../interfaces/product";
 import { AuthService } from '../../services/auth.service';
 
 @Component({

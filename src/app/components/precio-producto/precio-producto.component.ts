@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoService } from '../../services/carrito.service';
-import { Product } from "../../interfaces/Product";
+import { Product } from "../../interfaces/product";
 import { AuthService } from '../../services/auth.service';
 import { ProductsService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
