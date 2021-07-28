@@ -1,14 +1,33 @@
 <section class="d-flex justify-content-around principal my-5">
     <div class="col text-md-center border rounded d-flex justify-content-center align-items-center">
-        <img [src]="producto.urlImage" alt="Imagen del producto" class="img-fluid product-img">
+		<div class="text-center mt-5" [hidden]="hideSpinner">
+			<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+				<span class="visually-hidden">Cargando...</span>
+			</div>
+		</div>
+
+        <img [src]="producto.urlImage" alt="Imagen del producto" class="img-fluid product-img" [hidden]="hideImage">
     </div>
 
     <div class="col datos">
+		<div class="text-center mb-5" [hidden]="hideSpinner">
+			<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+				<span class="visually-hidden">Cargando...</span>
+			</div>
+		</div>
+		
         <app-precio-producto></app-precio-producto>
     </div>
 </section>
 
 <section class="descripcion">
     <h1 class="display-6 mb-4 fw-bold text-start">Descripción del producto:</h1>
+	
+	<div class="text-center mt-5" [hidden]="hideSpinner">
+		<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+			<span class="visually-hidden">Cargando...</span>
+		</div>
+	</div>
+
     <p>{{ producto.description }}</p>
 </section>

@@ -14,6 +14,12 @@
                     <a routerLink="/productos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link link-dark">Mostrar todo</a>
                 </li>
 
+				<div class="text-center my-4" [hidden]="hideSpinner">
+					<div class="spinner-border" role="status">
+						<span class="visually-hidden">Cargando...</span>
+					</div>
+				</div>
+
                 <app-sidebar-category [categoria]='categoria'
                 *ngFor="let categoria of categorias"></app-sidebar-category>
                 <li class="border-top my-3"></li>

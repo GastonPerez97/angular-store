@@ -11,6 +11,8 @@ export class SidebarComponent implements OnInit {
     @Input()
     categorias: Category[];
 
+	hideSpinner = false;
+
     constructor(private categoriesService: CategoriesService) {
         this.categorias = [];
     }
@@ -23,6 +25,7 @@ export class SidebarComponent implements OnInit {
         this.categoriesService.getAllCategories()
         .subscribe(categorias => {
             this.categorias = categorias;
+			this.hideSpinner = true;
         });
     }
 }
