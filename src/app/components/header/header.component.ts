@@ -12,6 +12,7 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class HeaderComponent {
     public user$: Observable<any> = this.authService.afAuth.user;
+	public userData: any;
     public countProducts: number;
 	public admin = environment.admin;
 
@@ -20,6 +21,11 @@ export class HeaderComponent {
     }
 
     ngOnInit(): void {
+		this.user$.subscribe(
+            (response) => this.getCurrentUserData(),
+            (error) => console.error("error")
+        );
+		
         this.countProducts = this.carritoService.getCountProducts();
 
         this.carritoService.getCountProducts$().subscribe(count => {
@@ -30,9 +36,20 @@ export class HeaderComponent {
     async logoutUser() {
         try {
             await this.authService.logoutUser();
+			this.userData = null;
             this.router.navigate(['/']);
         } catch (error) {
             console.log(error);
         }
     }
+
+	async getCurrentUserData() {
+		const user = await this.authService.getCurrentUser();
+
+		if (user) {
+			this.authService.getUserData(user!.uid)
+				.then(userData => this.userData = userData.val())
+				.catch(error => console.error(error));
+		}
+	}
 }

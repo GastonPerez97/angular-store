@@ -22,7 +22,7 @@
             <div *ngIf="user$ | async as user; else login">
                 <div class="text-center auth-btn">
                     <div class="d-flex align-items-center justify-content-center mb-3 mb-sm-0">
-                        <p class="m-0">{{ user.email }}</p>
+                        <p class="m-0">Hola, <b>{{ userData?.name }}</b>!</p>
                         <a routerLink="/carrito" class="text-decoration-none btn btn-primary ms-3 mx-0 mx-sm-3"><i class="fa fa-shopping-cart"></i><span class="ms-2" *ngIf="countProducts >= 1">{{ countProducts }}</span></a>
                     </div>
 

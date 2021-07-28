@@ -72,6 +72,10 @@ export class AuthService {
         return this.afAuth.authState.pipe(first()).toPromise();
     }
 
+	async getUserData(id: string) {
+		return await this.db.database.ref('users').child(id).once("value");
+	}
+
     async logoutIfEmailNotVerified() {
         const user = await this.getCurrentUser();
         
