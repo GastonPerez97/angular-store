@@ -1,27 +1,35 @@
-# TallerWeb2Proyecto
+# AngularStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
+https://angular-store-tw2.vercel.app/
 
-## Development server
+Aplicación Web de tipo "E-Commerce" que cuenta con las siguientes funcionalidades:
+- Gestión de usuarios (persistencia, autenticación y autorización).
+- Signup.
+- Signin.
+- Validación de E-Mail una vez registrado.
+- Recupero de contraseña.
+- Gestión de productos.
+- Visualización de productos.
+- Agregar producto al carrito.
+- Ver carrito de compras.
+- Carga de nuevo producto (solo disponible para administrador).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Esta aplicación no cuenta con un sistema de pago real.
 
-## Code scaffolding
+## Tecnologías utilizadas:
+- Frontend: Angular, Bootstrap, Firebase.
+- [Backend](https://github.com/GastonPerez97/taller-web2-api): NodeJS, Express, MongoDB, Mongoose.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Detalles relevantes de las funcionalidades:
+- Gestión de usuarios:
+  * Se utiliza Firebase para la autenticación de usuarios.
+  * Firebase es el encargado de la validación de E-Mail, recuperación de contraseña y seguridad de la información del usuario (tal como la contraseña).
+  * No es posible utilizar el mismo mail para registrar múltiples usuarios.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Gestión de productos:
+  * Se utiliza la siguiente API para la gestión de productos: https://github.com/GastonPerez97/taller-web2-api
+  * Desde la visualización del producto será posible agregar el mismo al carrito de compras.
+  * No es posible agregar al carrito si la sesión no fue iniciada.
+  * En la visualización del carrito de compras se muestra el detalle de los productos del pedido
+a realizar, pudiendo aumentar o disminuir la cantidad de cada producto o simplemente eliminarlo.
+  * Se utiliza el Local Storage para el almacenamiento de los productos agregados al carrito.
