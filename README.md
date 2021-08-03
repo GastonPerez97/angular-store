@@ -29,7 +29,8 @@ Esta aplicación no cuenta con un sistema de pago real.
 
 - Gestión de productos:
   * Se utiliza la siguiente API para la gestión de productos: https://github.com/GastonPerez97/taller-web2-api
-  * Desde la visualización del producto será posible agregar el mismo al carrito de compras.
+  * Los productos están organizados por categorías, estas se muestran, por ejemplo, en el Inicio y en el sidebar de Productos.
+  * Desde la visualización del producto es posible agregar el mismo al carrito de compras.
   * No es posible agregar al carrito si la sesión no fue iniciada.
   * En la visualización del carrito de compras se muestra el detalle de los productos del pedido
 a realizar, pudiendo aumentar o disminuir la cantidad de cada producto o simplemente eliminarlo.
@@ -38,6 +39,7 @@ a realizar, pudiendo aumentar o disminuir la cantidad de cada producto o simplem
 ## Carga de producto:
 
 Por motivos de seguridad solo el administrador puede cargar nuevos productos.
+
 A continuación se muestra un ejemplo de esta funcionalidad:
 
 https://user-images.githubusercontent.com/58083159/128065468-361c4f0e-8575-42b6-822b-081d48365615.mp4
